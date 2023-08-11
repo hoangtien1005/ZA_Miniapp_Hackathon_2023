@@ -20,9 +20,11 @@ import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { ArticleZoneSlider } from '~/ui/shared/ArticleZoneSlider';
 import Chat from '~/ui/shared/ChatPage';
 import { sortTwoItemByIndex } from '~/utils/common.util';
-import { FoodBannerImg } from '~/ui/assets/images';
 import { LIST_OA_TYPE } from '~/constants/app';
-import { OAArticleListHorizontal, OAArticleListVertical } from '~/ui/shared/OAArticleList';
+import {
+  OAArticleListHorizontal,
+  OAArticleListVertical,
+} from '~/ui/shared/OAArticleList';
 import { useGetOAArticlesQuery } from '~/application/article/useGetOAArticlesQuery.usecase';
 import { handleOpenWebview } from '~/utils/zalo.util';
 
@@ -85,9 +87,9 @@ export const HomepageContainer = () => {
   }, []);
 
   const headerBanner = {
-    imageUrl: FoodBannerImg,
-    altText: 'food banner'
-  }
+    imageUrl: '',
+    altText: 'food banner',
+  };
 
   const { data: pinnedArticles } = useGetOAArticlesQuery({
     limit: 10,

@@ -213,8 +213,6 @@ const InputSection: FC<InputSectionProps> = ({
     setPreviewFiles([...previewFiles, url]);
   };
 
-  console.log('isStickerPickerOpened', isStickerPickerOpened);
-
   return (
     <>
       <div
@@ -229,12 +227,11 @@ const InputSection: FC<InputSectionProps> = ({
               onSelect={sendSticker}
             />
           )}
-
           <button
             onClick={() => setIsStickerPickerOpened(true)}
             className="flex items-center"
           >
-            <StickerIcon />
+            <Icon icon="zi-file" />
           </button>
         </div>
 
@@ -247,7 +244,8 @@ const InputSection: FC<InputSectionProps> = ({
             onClick={() => setIsGifPickerOpened(true)}
             className="flex items-center"
           >
-            <GifIcon />
+            {/* <GifIcon /> */}
+            <Icon icon="zi-photo" />
           </button>
         </div>
 

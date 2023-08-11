@@ -14,8 +14,6 @@ import RemoveDataImg from '~/ui/assets/images/remove_data.png';
 // import NavProfileOffImg from '~/ui/assets/images/nav/nav_profile.svg';
 import SubpageInsuranceImg from '~/ui/assets/images/subpage_ins.png';
 
-import FoodBannerImg from '~/ui/assets/images/food-banner.jpeg';
-
 export {
   NavDiscoverOnImg,
   // NavDiscoverOffImg,
@@ -31,5 +29,4 @@ export {
   BannerHomePlaceholderImg,
   RemoveDataImg,
   SubpageInsuranceImg,
-  FoodBannerImg,
 };

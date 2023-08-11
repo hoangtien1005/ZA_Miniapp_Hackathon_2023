@@ -8,6 +8,7 @@ import { Spinner } from 'zmp-ui';
 import { ConversationInfo, MessageItem } from '~/constants/interface';
 import { useRecoilState } from 'recoil';
 import { userProfileState } from '~/adapters/store/atoms/user';
+import useMessage from '~/ui/hooks/use-message';
 
 interface ChatViewProps {
   conversation: ConversationInfo;
@@ -39,14 +40,14 @@ const ChatView: FC<ChatViewProps> = ({
   //   )
   // );
 
-  const { data, loading, error } = {
-    data: {
-      message: [],
-      total: 0,
-    },
+  const { loading, error } = {
     loading: false,
     error: null,
   };
+
+  const { data } = useMessage('2');
+
+  console.log('data', data);
 
   const dataRef = useRef(data);
   const conversationIdRef = useRef(conversationId);
@@ -68,7 +69,7 @@ const ChatView: FC<ChatViewProps> = ({
     setTimeout(() => {
       scrollBottomRef.current?.scrollIntoView();
     }, 100);
-  }, [data?.message?.slice(-1)?.[0]?.id || '']);
+  }, [data?.messages?.slice(-1)?.[0]?.id || '']);
 
   const updateSeenStatus = () => {
     // TODO: update seen status
@@ -125,7 +126,7 @@ const ChatView: FC<ChatViewProps> = ({
 
   return (
     <InfiniteScroll
-      dataLength={data?.total as number}
+      dataLength={(data?.total as number) || 0}
       next={() => setLimitCount((prev) => prev + 10)}
       inverse
       hasMore={(data?.total as number) >= limitCount}
@@ -138,7 +139,7 @@ const ChatView: FC<ChatViewProps> = ({
       height={`calc(100vh - ${144 + inputSectionOffset}px)`}
     >
       <div className="flex flex-col items-stretch gap-3 pt-10 pb-1">
-        {data?.message.map((item, index) => (
+        {data?.messages?.map((item, index) => (
           <Fragment key={item.id}>
             {item.sender === currentUser?.uid ? (
               <RightMessage

@@ -24,7 +24,7 @@ export interface MessageItem {
   };
   createdAt: string;
   type: 'text' | 'image' | 'sticker' | 'removed';
-  reactions: {
+  reactions?: {
     [key: string]: number;
   };
 }

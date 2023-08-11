@@ -1,14 +1,9 @@
-import React, { FC, Fragment, useState } from 'react';
+import React, { FC, Fragment } from 'react';
 import { formatDate, splitLinkFromMessage } from '~/utils/format.util';
 
-import { useRecoilState } from 'recoil';
-import { userProfileState } from '~/adapters/store/atoms/user';
 import { EMOJI_REGEX } from '~/constants';
 import { ConversationInfo, MessageItem } from '~/constants/interface';
-import ReactionPopup from '../Chat/ReactionPopup';
 import ReplyBadge from '../Chat/ReplyBadge';
-import ClickAwayListener from '../ClickAwayListener';
-import ReplyIcon from '../Icon/ReplyIcon';
 import SpriteRenderer from '../SpriteRenderer';
 
 interface LeftMessageProps {
@@ -24,9 +19,6 @@ const LeftMessage: FC<LeftMessageProps> = ({
   conversation,
   setReplyInfo,
 }) => {
-  const [isSelectReactionOpened, setIsSelectReactionOpened] = useState(false);
-  const [currentUser] = useRecoilState(userProfileState);
-
   const formattedDate = formatDate(
     message.createdAt ? +message.createdAt : Date.now()
   );
@@ -66,7 +58,7 @@ const LeftMessage: FC<LeftMessageProps> = ({
               <div
                 onClick={(e) => e.stopPropagation()}
                 title={formattedDate}
-                className={`bg-dark-lighten rounded-lg p-2 text-white ${
+                className={`bg-dark-lighten rounded-lg p-2 ${
                   conversation.users.length === 2
                     ? 'after:border-dark-lighten relative after:absolute after:right-full after:bottom-[6px] after:border-8 after:border-t-transparent after:border-l-transparent'
                     : ''
@@ -106,44 +98,6 @@ const LeftMessage: FC<LeftMessageProps> = ({
           >
             Message has been removed
           </div>
-        )}
-
-        {message.type !== 'removed' && (
-          <>
-            <button
-              onClick={() => setIsSelectReactionOpened(true)}
-              className="text-lg text-gray-500 opacity-0 transition hover:text-gray-300 group-hover:opacity-100"
-            >
-              <i className="bx bx-smile"></i>
-            </button>
-            <button
-              onClick={(e) => {
-                setReplyInfo(message);
-                e.stopPropagation();
-              }}
-              className="text-gray-500 opacity-0 transition hover:text-gray-300 group-hover:opacity-100"
-            >
-              <ReplyIcon />
-            </button>
-
-            {isSelectReactionOpened && (
-              <ClickAwayListener
-                onClickAway={() => setIsSelectReactionOpened(false)}
-              >
-                {(ref) => (
-                  <ReactionPopup
-                    position={'left'}
-                    forwardedRef={ref}
-                    setIsOpened={setIsSelectReactionOpened}
-                    messageId={message.id as string}
-                    currentReaction={
-                      message.reactions?.[currentUser?.uid as string] || 0
-                    }
-                  />
-                )}
-              </ClickAwayListener>
-            )}
-          </>
         )}
       </div>
     </div>

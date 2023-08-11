@@ -1,0 +1,58 @@
+
+// @import "var";
+@import "common/mixin";
+@import "common/var";
+
+// Include lib slick
+@import "lib/slick/slick";
+@import "lib/slick/slick-theme";
+@import "lib/slick/custom";
+
+// Include component
+@import "component/banner";
+@import "component/product";
+// @import "component/news";
+// @import "component/module_scroll_mask";
+// @import "lib/nouislider/custom";
+.sec_profile {
+	background-color: $ana_20;
+	min-height: calc(100vh - 45px - 68px);
+	.product_slider {
+	  height: 127px;
+	} 
+}
+.module_payment {
+	.payment {
+		box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		position: relative;
+		padding: 24px 24px 24px 16px;
+		@include min_320 {
+			padding: 24px 40px 24px 16px;
+		}
+		&:before {
+			position: absolute;
+			content: "";
+			top: 50%;
+			transform: translateY(-50%);
+			width: 20px;
+			height: 20px;
+			right: 8px;
+			background-image: url(../images/icon/icon_right_w.svg);
+			@include min_320 {
+				right: 16px;
+			}
+		}
+		&_zalopay {
+			color: #fff;
+			background: linear-gradient(89.73deg, #0061EE 2.32%, #4490FF 97.71%);
+			border: 1px solid #4591FF;
+		}
+		.icon {
+			flex-shrink: 0;
+			margin-right: 8px;
+		}
+	}
+}

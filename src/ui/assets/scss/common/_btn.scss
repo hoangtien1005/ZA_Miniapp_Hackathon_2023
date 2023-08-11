@@ -1,0 +1,65 @@
+.btn {
+	min-width: 150px;
+	max-width: 310px;
+	line-height: 46px;
+	font-size: 14px;
+	font-family: 'Roboto';
+	border-radius: 8px;
+	padding: 0 8px;
+	text-align: center;
+	font-weight: 500;
+	cursor: pointer;
+	&:focus {
+		outline: initial;
+	}
+	&.btn-lg {
+		line-height: 52px;
+	}
+	&-primary {
+		background-color: $color-main;
+		color: #fff;
+		&.disabled {
+			background-color: $text_400;
+			pointer-events: none;
+		}
+	}
+	&-red {
+	  background-color: #FF4B38;
+	  color: #fff;
+	}
+	&-sub {
+		background-color: $green;
+		color: #fff;
+		&.disabled {
+			background-color: $text_400;
+			pointer-events: none;
+		}
+	}
+	&-outline {
+		&-primary {
+			border: 1px solid $color-main;
+			color: $color-main!important;
+			&-sub {
+				border: 1px solid $color-main;
+				color: $color-main!important;
+			}
+		}
+		&-white {
+			border: 1px solid white;
+			color: white!important;
+			&-sub {
+				border: 1px solid white;
+				color: $ana_300!important;
+			}
+		}
+	}
+	&.w-100 {width: 100%;}
+	&.w-120 {
+		max-width: 120px;
+		font-size: 12px;
+		line-height: 40px;
+	}
+}
+.link {
+	color: $blue_400;
+}

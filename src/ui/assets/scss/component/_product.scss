@@ -1,0 +1,124 @@
+
+.product_slider {
+  &:not(.has_status) {
+    background: linear-gradient(263.21deg, rgba(255, 213, 114, 0.05) -2.13%, rgba(0, 104, 185, 0.05) 104.23%);
+    border: 1px solid #FFECEF;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .card_item {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    min-height: 127px;
+
+    .card_thumb {
+      flex-shrink: 0;
+      width: 72px;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .imgDrop {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          position: static;
+          object-fit: contain;
+          max-width: 72px;
+          max-height: 72px;
+        }
+      }
+
+      .thumb_insu {
+        height: 72px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 8px;
+
+        img {
+          width: 32px;
+          height: auto;
+        }
+      }
+    }
+
+    .card_des {
+      width: calc(100% - 72px - 8px);
+
+
+      &.w-auto {
+        width: auto !important;
+      }
+    }
+
+
+  }
+
+  .slick-dots {
+    position: static;
+    margin-top: -26px;
+    margin-bottom: 14.4px;
+  }
+
+  &.has_status {
+    margin: -16px;
+
+    .card_item {
+      .card_thumb {
+        margin-right: 12px;
+        @include min_320 {
+          margin-right: 24px;
+        }
+      }
+    }
+  }
+}
+
+.product_list {
+  .bank_item {
+    width: calc((100% - 60px) / 4);
+
+    .imgDrop {
+      padding-top: 100%;
+    }
+  }
+}
+
+.module_scroll {
+  &.nav_product {
+    border-radius: 0 0 8px 8px;
+    padding: 16px;
+
+    .scroll_item {
+      min-width: 72px;
+      padding: 6px 0;
+      width: 72px;
+      height: 36px;
+      border-radius: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // box-shadow: 0px 2px 6px -4px rgba(60, 56, 149, 0.02), 0px 4px 12px -2px rgba(60, 56, 149, 0.08);
+      &.active {
+        background: #FBF8FF;
+        box-shadow: inset 1px 1px 2px rgba(31, 84, 224, 0.16);
+      }
+
+      &:not(.active) {
+        .icon {
+          filter: grayscale(1);
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}

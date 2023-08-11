@@ -1,0 +1,49 @@
+.wrap-header {
+  padding-top: 36px;
+  margin-bottom: -38px;
+  position: relative;
+  z-index: 9999;
+
+  .btn-back-header {
+    background-image: url("../../assets/icons/ic-back-header.svg");
+    background-size: 16px;
+
+    width: 28px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    //position: absolute;
+    //top: 50%;
+    //left: 28px;
+    //margin-left: 0;
+    position: relative;
+    margin-right: 12px;
+    //transform: translateY(-50%);
+  }
+
+  .title-header {
+    //margin-left: 64px;
+  }
+}
+
+.is-fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
+
+
+}
+
+.header-align {
+  height: 45px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 500;
+  background: #7B35BB;
+  color: #fff;
+}

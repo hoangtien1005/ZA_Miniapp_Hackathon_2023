@@ -1,0 +1,162 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "@tanstack/query"
+  ],
+  "rules": {
+    // compulsory rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+
+    // custom rules
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "jsx-a11y/alt-text": "off",
+    "react/no-unescaped-entities": "off",
+    "import/prefer-default-export": "off",
+    "no-restricted-exports": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react/prop-types": "warn",
+    "no-empty-pattern": "off",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "react/jsx-filename-extension": [
+      "off",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/function-component-definition": [
+      "off",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "import/extensions": "off",
+    "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    // custom import order
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react+(|-native)",
+            "group": "external",
+            "position": "before"
+          },
+          // absolute import order
+          {
+            "pattern": "src/domain/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/application/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/adapters/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/constants/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/configs/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/libs/**",
+            "group": "internal",
+            "position": "before"
+          },
+          // ui import order
+          {
+            "pattern": "src/ui/assets/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/ui/shared/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react+(|-native)"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    // tanstack-query
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/prefer-query-object-syntax": "error"
+  },
+  "overrides": [
+    {
+      "files": ["src/store/**/*.ts"],
+      "rules": {
+        "no-param-reassign": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "arrow-body-style": "off"
+      }
+    }
+  ]
+}

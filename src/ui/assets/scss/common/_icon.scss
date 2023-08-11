@@ -1,0 +1,41 @@
+$sizes: 12, 14, 16, 18, 20, 24,30, 32, 40, 44, 60;
+.icon {
+	display: block;
+	@each $size in $sizes {
+	  &.sz-#{$size} {
+		width: #{$size}px;
+		height: #{$size}px;
+	  }
+	}
+	i {
+		background-size: 100%;
+		background-repeat: no-repeat;
+		background-position: center center;
+		width: 100%;
+		height: 100%;
+		display: block;
+  }
+}
+
+// icon name
+.icon {
+	&_arr {
+		&_left {
+			&_w {
+				background-image: url(../images/icon/arr_left_w.svg);
+			}
+		}
+	}
+	&_bell {
+		&_w {background-image: url(../images/icon/icon_bell_w.svg);}
+	}
+	&_right {
+		background-image: url(../images/icon/arr_right.svg);
+		&_violet {background-image: url(../images/icon/icon_right_violet.svg);}
+		&_blue {background-image: url(../images/icon/icon_right_blue.svg);}
+	}
+	&_noti {
+	  &_red {background-image: url(../images/icon/noti_red.svg);}
+	  &_blue {background-image: url(../images/icon/noti_blue.svg);}
+	}
+}

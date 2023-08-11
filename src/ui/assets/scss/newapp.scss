@@ -1,0 +1,11 @@
+// @import "var";
+@import "common/mixin";
+@import "common/var";
+
+// Include lib slick
+@import "lib/slick/slick";
+@import "lib/slick/slick-theme";
+@import "lib/slick/custom";
+
+// Include component
+@import "component/banner";

@@ -1,0 +1,9 @@
+@import "mixin";
+@import "var";
+
+.status {
+	&_unfinish {color: $ana_300;}
+	&_wait {color: $blue_300;}
+	&_fail {color: $red;}
+	&_done {color: $green;}
+}

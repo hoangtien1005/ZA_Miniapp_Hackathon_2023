@@ -1,0 +1,132 @@
+$w_320: 320px;
+$w_375: 375px;
+$w_480: 480px;
+$w_576: 576px;
+$w_767: 768px;
+$w_991: 991px;
+$w_1024: 1024px;
+$w_1200: 1240px;
+$w_1400: 1400px;
+$w_1600: 1700px;
+
+// @max with
+@mixin max_320 {
+	@media (max-width: #{$w_320}) {
+		@content;
+	}
+}
+
+@mixin max_375 {
+	@media (max-width: #{$w_375}) {
+		@content;
+	}
+}
+
+@mixin max_480 {
+	@media (max-width: #{$w_480}) {
+		@content;
+	}
+}
+
+@mixin max_576 {
+	@media (max-width: #{$w_576}) {
+		@content;
+	}
+}
+
+@mixin max_767 {
+	@media (max-width: #{$w_767}) {
+		@content;
+	}
+}
+
+@mixin max_991 {
+	@media (max-width: #{$w_991}) {
+		@content;
+	}
+}
+
+@mixin max_1024 {
+	@media (max-width: #{$w_1024}) {
+		@content;
+	}
+}
+
+@mixin max_1200 {
+	@media (max-width: #{$w_1200}) {
+		@content;
+	}
+}
+
+@mixin max_1400 {
+	@media (max-width: #{$w_1400}) {
+		@content;
+	}
+}
+
+@mixin max_1600 {
+	@media (max-width: #{$w_1600}) {
+		@content;
+	}
+}
+
+// @min width
+@mixin min_320 {
+	@media (min-width: #{$w_320 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_375 {
+	@media (min-width: #{$w_375 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_480 {
+	@media (min-width: #{$w_480 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_576 {
+	@media (min-width: #{$w_576 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_767 {
+	@media (min-width: #{$w_767 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_991 {
+	@media (min-width: #{$w_991 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_1024 {
+	@media (min-width: #{$w_1024 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_1200 {
+	@media (min-width: #{$w_1200 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_1400 {
+	@media (min-width: #{$w_1400 + 1}) {
+		@content;
+	}
+}
+
+@mixin min_1600 {
+	@media (min-width: #{$w_1600 + 1}) {
+		@content;
+	}
+}

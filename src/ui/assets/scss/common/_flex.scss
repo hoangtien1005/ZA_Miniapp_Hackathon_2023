@@ -1,0 +1,34 @@
+$sizes: 4, 6, 8, 12, 16, 20, 24, 32, 36, 40, 42;
+
+.flex {
+	display: flex;
+	&-midle {align-items: center;}
+	&-center { justify-content: center;}
+	&-space {justify-content: space-between;}
+}
+@each $size in $sizes {
+	.gap-#{$size} {
+		grid-gap: #{$size}px;
+		gap: #{$size}px;
+	}
+}
+@each $size in $sizes {
+	.gapx-#{$size} {
+		grid-gap: 0 #{$size}px;
+		gap: 0 #{$size}px;
+	}
+}
+@each $size in $sizes {
+	.gapy-#{$size} {
+		grid-gap: #{$size}px 0;
+		gap: #{$size}px 0;
+	}
+}
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 8px;
+	.col-6 {
+		width: calc(50% - 4px);
+	}
+}

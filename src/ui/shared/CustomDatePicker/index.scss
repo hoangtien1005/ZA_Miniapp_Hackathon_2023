@@ -1,0 +1,104 @@
+// Analogous
+$ana_20: #FDF6FF;
+$ana_50: #F3E4F8;
+$ana_100:#E0BDEE;
+$ana_200: #CD90E3;
+$ana_300:#B863D8;
+$ana_2300:#7272B3;
+
+//blue
+$blue_b4:#5A6DED;
+$blue_b7: #EEF0FB;
+
+// zalo
+$green: #00C853;
+
+// red
+$red:#E60F0F;
+
+// text
+$color: #6F6F6F;
+
+$text_300: #EDEDED;
+$text_200: #F2F2F2;
+$text_400: #ccc;
+$text_500: #AEAEAE;
+$text_700: #6F6F6F;
+$text_900: #2D2D2D;
+
+.group_field {
+	.zaui-input-affix-wrapper {
+		margin-top: 4px;
+		// border: 1px solid $text_200;
+    border: 1px solid #A6F5EE;
+		border-radius: 8px;
+		height: 40px;
+    padding: 0;
+		margin-bottom: 34px;
+
+    &-disabled {
+      border: 1px solid $text_200;
+      pointer-events: none;
+    }
+
+    &.disabled {
+      border: 1px solid $text_200;
+      pointer-events: none;
+    }
+		
+    .zaui-input {
+		background-color: #FFF;
+
+      padding: 12px 8px;
+      font-size: 14px;
+      font-weight: 400;
+
+      &:focus-visible {
+        border: 1px solid $ana_200;
+        outline: none;
+        box-shadow: none;
+      }
+      
+      &::placeholder {
+        color: $text_500;
+      }
+
+      height: 100%;
+      &.disabled {
+        pointer-events: none;
+        background-color: $text_200 !important;
+      }
+      &.icon {
+        padding-right: 40px;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center right 10px;
+        &_dropdown {
+          background-image: url(../../assets/images/icon/form_dropdown_insu.svg);
+        }
+        &_calendar {
+          background-image: url(../../assets/images/icon/form_calendar_insu.svg);
+          &.disabled {
+            background-image: url(../../assets/images/icon/form_calendar_gray.svg);
+          }
+        }
+      }
+    }
+
+    .zaui-input-suffix {
+      display: none;
+    }
+
+	}
+	&:last-child {
+		.zaui-input-affix-wrapper {
+			margin-bottom: 18px;
+		}
+	}
+	&.field_err {
+		position: relative;
+		.zaui-input-affix-wrapper {
+			border-color: $red;
+		}
+	}
+}

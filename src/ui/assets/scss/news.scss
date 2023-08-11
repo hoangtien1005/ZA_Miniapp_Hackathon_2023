@@ -1,0 +1,16 @@
+
+// @import "var";
+@import "common/mixin";
+@import "common/var";
+
+// Include lib slick
+@import "lib/slick/slick";
+@import "lib/slick/slick-theme";
+@import "lib/slick/custom";
+
+// Include component
+@import "component/banner";
+@import "component/product";
+@import "component/news";
+@import "component/module_scroll_mask";
+// @import "lib/nouislider/custom";

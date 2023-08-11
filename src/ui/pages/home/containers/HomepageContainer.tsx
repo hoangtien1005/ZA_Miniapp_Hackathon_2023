@@ -14,14 +14,17 @@ import {
   MAX_LOAN_BANNERS_HOME,
   MAX_LOAN_LOGOS_HOME,
 } from '~/constants';
-import { PRODUCT_TYPE, TYPE_BANNER, TYPE_LOGO } from '~/constants/enums';
-import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
+import { TYPE_BANNER, TYPE_LOGO } from '~/constants/enums';
 import '~/ui/assets/scss/home.scss';
+import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { ArticleZoneSlider } from '~/ui/shared/ArticleZoneSlider';
+import Chat from '~/ui/shared/ChatPage';
 import { sortTwoItemByIndex } from '~/utils/common.util';
-import { FoodBannerImg } from '~/ui/assets/images';
 import { LIST_OA_TYPE } from '~/constants/app';
-import { OAArticleListHorizontal, OAArticleListVertical } from '~/ui/shared/OAArticleList';
+import {
+  OAArticleListHorizontal,
+  OAArticleListVertical,
+} from '~/ui/shared/OAArticleList';
 import { useGetOAArticlesQuery } from '~/application/article/useGetOAArticlesQuery.usecase';
 import { handleOpenWebview } from '~/utils/zalo.util';
 
@@ -84,9 +87,9 @@ export const HomepageContainer = () => {
   }, []);
 
   const headerBanner = {
-    imageUrl: FoodBannerImg,
-    altText: 'food banner'
-  }
+    imageUrl: '',
+    altText: 'food banner',
+  };
 
   const { data: pinnedArticles } = useGetOAArticlesQuery({
     limit: 10,

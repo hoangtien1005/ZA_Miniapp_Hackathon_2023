@@ -15,7 +15,7 @@ export const LoansZone: React.FC<LoansZoneProps> = ({
   loanPartnerLogos = [],
 }) => {
   return (
-    <section className="sec_loan sec_module">
+    <section className="sec_loan sec_module mt-16">
       <div className="container">
         <div className="heading">
           <h2 className="ttl fz-16 fw-700">Vay nhanh</h2>

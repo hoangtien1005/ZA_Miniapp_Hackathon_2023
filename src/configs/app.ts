@@ -48,4 +48,6 @@ export const OLD_FIZA_URL = appConfig.isProd
   ? appConfig.production.api_old_fiza_url
   : appConfig.development.api_old_fiza_url;
 
+export const GIPHY_API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
+
 export default appConfig;

@@ -1,8 +1,9 @@
 import ROUTES from '~/constants/routes';
-import DiscoverPage from '~/ui/pages/discover';
+import ChatPage from '~/ui/pages/chat';
 import HomePage from '~/ui/pages/home';
-import NewsPage from '~/ui/pages/news';
 import ProfilePage from '~/ui/pages/profile';
+import ProfileDataInfoPage from '~/ui/pages/profile-data-info';
+import ProfileDataListPage from '~/ui/pages/profile-data-list';
 
 export type RouteItem = {
   path: string;
@@ -11,19 +12,23 @@ export type RouteItem = {
 
 export const APP_ROUTES: RouteItem[] = [
   {
-    path: ROUTES.INDEX,
+    path: ROUTES.HOME,
     Element: HomePage,
   },
   {
-    path: ROUTES.DISCOVER,
-    Element: DiscoverPage,
-  },
-  {
-    path: ROUTES.NEWS,
-    Element: NewsPage,
+    path: ROUTES.CHAT,
+    Element: ChatPage,
   },
   {
     path: ROUTES.PROFILE,
     Element: ProfilePage,
+  },
+  {
+    path: ROUTES.PROFILE_DATA_LIST,
+    Element: ProfileDataListPage,
+  },
+  {
+    path: `${ROUTES.PROFILE_DATA_INFO}/:leadId/:leadType`,
+    Element: ProfileDataInfoPage,
   },
 ];

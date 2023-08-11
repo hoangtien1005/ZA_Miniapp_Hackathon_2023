@@ -1,20 +1,21 @@
 const ROUTES = {
-  INDEX: '/',
   HOME: '/',
-  DISCOVER: '/discover',
-  NEWS: '/news',
+  CHAT: '/chat',
   PROFILE: '/profile',
+  PROFILE_DATA_LIST: '/profile-data-list',
+  PROFILE_DATA_INFO: '/profile-data-info',
+  
 };
 
 export const mappingTitleFromRoute: any = {
-  [ROUTES.HOME]: 'Tài chính Fiza',
-  [ROUTES.DISCOVER]: 'Khám phá',
-  [ROUTES.NEWS]: 'Tin tức',
-  [ROUTES.PROFILE]: 'Cá nhân',
+  [ROUTES.HOME]: 'Food Date',
+  [ROUTES.CHAT]: 'Chat',
+  [ROUTES.PROFILE]: 'Profile',
+  // [ROUTES.PROFILE]: 'Cá nhân',
+  [ROUTES.PROFILE_DATA_LIST]: 'Profile',
 };
 
 export const mappingDefaultPreviousRoute = {
-  [ROUTES.DISCOVER]: ROUTES.HOME,
 };
 
 export default ROUTES;

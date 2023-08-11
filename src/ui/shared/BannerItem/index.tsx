@@ -31,26 +31,10 @@ export default function BannerItem(banner: BannerItemProps) {
     if (banner.onClickItem) banner.onClickItem(banner);
     else if (banner.redirectUrl) openLink(banner.redirectUrl);
   };
-  const imgExtension = banner.imageUrl?.split('.').pop();
   return (
     <div className={classNameBanner} onClick={handleOnClickBanner}>
       <div className="imgDrop">
-        {imgExtension === 'mp4' ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            // eslint-disable-next-line react/no-unknown-property
-            webkit-playsinline
-            preload="metadata"
-            poster={banner.imageUrl}
-            // src={banner.imageUrl}
-            // type="video/mp4"
-          />
-        ) : (
-          <img alt={banner.altText} src={banner.imageUrl} />
-        )}
+        <img alt={banner.altText} src={banner.imageUrl} />
       </div>
     </div>
   );

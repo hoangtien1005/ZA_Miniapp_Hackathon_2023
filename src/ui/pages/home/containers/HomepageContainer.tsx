@@ -19,6 +19,11 @@ import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import '~/ui/assets/scss/home.scss';
 import { ArticleZoneSlider } from '~/ui/shared/ArticleZoneSlider';
 import { sortTwoItemByIndex } from '~/utils/common.util';
+import { FoodBannerImg } from '~/ui/assets/images';
+import { LIST_OA_TYPE } from '~/constants/app';
+import { OAArticleListHorizontal, OAArticleListVertical } from '~/ui/shared/OAArticleList';
+import { useGetOAArticlesQuery } from '~/application/article/useGetOAArticlesQuery.usecase';
+import { handleOpenWebview } from '~/utils/zalo.util';
 
 export const HomepageContainer = () => {
   const { data: insuranceBanners } = useGetBannersByTypeQuery({
@@ -26,10 +31,7 @@ export const HomepageContainer = () => {
     sortFn: sortTwoItemByIndex,
     max: MAX_INSURANCE_BANNERS_HOME,
   });
-  const { data: headerBanners } = useGetBannersByTypeQuery({
-    type: TYPE_BANNER.HEADER,
-    sortFn: sortTwoItemByIndex,
-  });
+
   const { data: loanBanners } = useGetBannersByTypeQuery({
     type: TYPE_BANNER.LOAN,
     sortFn: sortTwoItemByIndex,
@@ -81,10 +83,26 @@ export const HomepageContainer = () => {
     };
   }, []);
 
+  const headerBanner = {
+    imageUrl: FoodBannerImg,
+    altText: 'food banner'
+  }
+
+  const { data: pinnedArticles } = useGetOAArticlesQuery({
+    limit: 10,
+    offset: 0,
+    category: 1,
+    isPinned: true,
+    requiredCategory: true,
+  });
+
+  const handleHorizontalArticleClick = (article) => () => {
+    handleOpenWebview(article.link);
+  };
   return (
     <>
-      <EntriesHomeZone headerBanner={headerBanners?.[0]} />
-      <LoansZone
+      <EntriesHomeZone headerBanner={headerBanner} />
+      {/* <LoansZone
         loanBanners={loanBanners}
         loanPartnerLogos={loanPartnerLogos}
       />
@@ -92,8 +110,20 @@ export const HomepageContainer = () => {
       <InsurancesZone
         banners={insuranceBanners}
         logos={insurancePartnerLogos}
-      />
-      <ArticleZoneSlider />
+      /> */}
+      <ArticleZoneSlider listOAType={LIST_OA_TYPE.FAVORITE} />
+
+      <ArticleZoneSlider listOAType={LIST_OA_TYPE.NEAREST} />
+
+      <section className="sec_news">
+        <div className="container">
+          <OAArticleListVertical
+            articles={pinnedArticles?.data}
+            containerClassName="mt-16"
+            handleArticleClick={handleHorizontalArticleClick}
+          />
+        </div>
+      </section>
     </>
   );
 };

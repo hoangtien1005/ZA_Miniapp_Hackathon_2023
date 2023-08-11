@@ -42,7 +42,7 @@ function MyApp() {
       <RecoilNexus />
       <Suspense fallback={<div>Loading...</div>}>
         <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           <MyFizaApp>
             <SnackbarProvider>
               <ZMPRouter>

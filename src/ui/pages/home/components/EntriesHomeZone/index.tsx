@@ -28,7 +28,6 @@ export const EntriesHomeZone: React.FC<EntriesHomeZoneProps> = ({
       <BannerItem
         classNameBanner="banner"
         {...headerBanner}
-        poster={BannerHomePlaceholderImg}
       />
       <div className="product_main">
         <ScrollNav

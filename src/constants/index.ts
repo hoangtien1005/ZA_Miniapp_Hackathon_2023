@@ -92,7 +92,7 @@ export const MAP_GROUP_STATE_CARD_AND_LOAN_TEXT = {
   },
 };
 
-export const TOKEN_KEY = 'zf-fin-sid';
+export const TOKEN_KEY = 'auth';
 
 export const listNumberPhoneVietNam = [
   '032',

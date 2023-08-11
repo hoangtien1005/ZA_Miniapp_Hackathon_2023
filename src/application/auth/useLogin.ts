@@ -11,7 +11,7 @@ export function useLogin() {
   return {
     async login() {
       const profile = await authService.login();
-      setUser(profile);
+      // setUser(profile);
     },
   };
 }

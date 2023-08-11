@@ -3,13 +3,12 @@ import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userProfileState } from '~/adapters/store/atoms/user';
-import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
-import useConversation from '~/ui/hooks/use-conversation';
-import ChatHeader from '~/ui/shared/Chat/ChatHeader';
-import ChatView from '~/ui/shared/Chat/ChatView';
-import InputSection from '~/ui/shared/Input/InputSection';
+import InputSection from './Input/InputSection';
+import ChatHeader from './Chat/ChatHeader';
+import ChatView from './Chat/ChatView';
+import useConversation from '../hooks/use-conversation';
 
-const ChatContainer: FC = () => {
+const Chat: FC = () => {
   const { id } = useParams();
 
   // const { data, loading, error } = useDocumentQuery(
@@ -71,4 +70,4 @@ const ChatContainer: FC = () => {
   );
 };
 
-export default withLayoutWrapper(ChatContainer);
+export default Chat;

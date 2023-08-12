@@ -3,124 +3,160 @@
 @import "var";
 
 body {
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	background: #fff;
-	color: $text_900;
-	font-size: 14px;
-	line-height: 20px;
-	max-width: 640px;
-	margin-left: auto;
-	margin-right: auto;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  background: #fff;
+  color: $text_900;
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
-* {box-sizing: border-box;}
-input, section, textarea {font-family: 'Roboto';}
+
+* {
+  box-sizing: border-box;
+}
+
+input,
+section,
+textarea {
+  font-family: 'Roboto';
+}
+
 .container {
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 12px;
-	padding-right: 12px;
-	@include min_320 {
-		padding-left: 16px;
-		padding-right: 16px;
-	}
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @include min_320 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
+
 img {
-	max-width: 100%;
+  max-width: 100%;
 }
+
 .imgAuto {
-	width: 100%;
-	display: block;
-	height: auto;
+  width: 100%;
+  display: block;
+  height: auto;
 }
+
 .imgDrop {
-	position: relative;
-	overflow: hidden;
-	background-size: cover;
-	display: block;
-	&.avt {
-		padding-top: 100%;
-		border-radius: 50%;
-	}
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		-o-object-fit: cover;
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-	video,
-	iframe, .img_srcset {
-		position: absolute!important;
-		top: 0;
-		left: 0;
-		width: 100%!important;
-		height: 100%!important;
-		-o-object-fit: cover;
-		object-fit: cover;
-	}
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  display: block;
+
+  &.avt {
+    padding-top: 100%;
+    border-radius: 50%;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  video,
+  iframe,
+  .img_srcset {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
+
 a[href='none'] {
-pointer-events: none;}
+  pointer-events: none;
+}
 
 .w {
-	&-auto, .w-full {
-		width: 100%;
-		height: auto;
-	}
-	&-40 {
-		width: 40px;
-	}
-	&-48 {
-		width: 48px;
-	}
-	&-310 {
-		max-width: 310px;
-		margin-left: auto;
-		margin-right: auto;
-	}
+
+  &-auto,
+  .w-full {
+    width: 100%;
+    height: auto;
+  }
+
+  &-40 {
+    width: 40px;
+  }
+
+  &-48 {
+    width: 48px;
+  }
+
+  &-310 {
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
 .images_drop {
   display: flex;
   align-items: center;
   justify-content: center;
+
   &.w-72 {
     width: 72px;
     height: 72px;
   }
+
   img {
     max-width: 100%;
     max-height: 100%;
   }
 }
+
 .shadow {
-	&2 {box-shadow: 0px 1px 2px 1px rgba(60, 56, 149, 0.04), 0px 1px 6px 1px rgba(60, 56, 149, 0.05);}
+  &2 {
+    box-shadow: 0px 1px 2px 1px rgba(60, 56, 149, 0.04), 0px 1px 6px 1px rgba(60, 56, 149, 0.05);
+  }
 }
+
 .bdrs {
-	overflow: hidden;
-	border-radius: 8px;
+  overflow: hidden;
+  border-radius: 8px;
 }
+
 body {
-	main {
-		padding-top: 45px;
-		min-height: 100vh;
-		position: relative;
-	}
-	&:not(.full_screen) {
-		main {
-			padding-bottom: 68px;
-		}
-	}
+  main {
+    padding-top: 45px;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  &:not(.full_screen) {
+    main {
+      padding-bottom: 68px;
+    }
+  }
 }
+
 .block_ana {
-	background-color: $ana_20;
-	&.has_navBottom {
-		min-height: calc(100vh - 45px - 68px);
-	}
+  background-color: $ana_20;
+
+  &.has_navBottom {
+    min-height: calc(100vh - 45px - 68px);
+  }
 }
+
 .list_border_top {
   &+.list_border_top {
     border-top: 1px solid #F3E4F8;
@@ -130,7 +166,10 @@ body {
 .group_data_list {
   .list_link {
     margin-top: -8px;
-    li:first-child {margin-top: 0;}
+
+    li:first-child {
+      margin-top: 0;
+    }
   }
 }
 
@@ -157,5 +196,21 @@ body {
     color: #CA1919 !important;
     background-color: transparent !important;
     border: 3px solid #CA1919 !important;
+  }
+}
+
+.reddot {
+  position: relative;
+
+  &::after {
+    display: block !important;
+    position: absolute;
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #00fff7;
+    border-radius: 50%;
+    right: -10px;
+    top: -4px;
   }
 }

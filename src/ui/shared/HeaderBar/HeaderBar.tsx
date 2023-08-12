@@ -30,7 +30,7 @@ function HeaderBar() {
       navigateBack();
     }
   };
-  const isTextCenter = ROUTES_WITH_HEADER_CENTER.includes(location.pathname);
+  const isTextCenter = false;
   const variantBtnBack =
     location.pathname === ROUTES.HOME ? 'icon_home_w' : 'icon_back_w';
   return (

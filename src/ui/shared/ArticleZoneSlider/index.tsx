@@ -14,6 +14,7 @@ import { handleOpenWebview } from '~/utils/zalo.util';
 
 interface ArticleZoneProps {
   listOAType: LIST_OA_TYPE;
+  onClickViewDetailOA: any;
 }
 
 function OAArticleItem({ article, onClick }) {
@@ -22,7 +23,7 @@ function OAArticleItem({ article, onClick }) {
       <div className="news_item shadow bdrs news_item_slider" onClick={onClick}>
         <div className="images">
           <div className="imgDrop">
-            <img src={article.oa_avatar} alt="" />
+            <img src={article.oa_cover} alt="" />
           </div>
         </div>
         <div className="news_des">
@@ -33,7 +34,7 @@ function OAArticleItem({ article, onClick }) {
   );
 }
 
-export const ArticleZoneSlider: React.FC<ArticleZoneProps> = ({ listOAType }) => {
+export const ArticleZoneSlider: React.FC<ArticleZoneProps> = ({ listOAType, onClickViewDetailOA }) => {
   const navigate = useAppNavigate();
 
   const sliderArticleConfig = {
@@ -91,7 +92,7 @@ export const ArticleZoneSlider: React.FC<ArticleZoneProps> = ({ listOAType }) =>
                 <OAArticleItem
                   key={article.id}
                   article={article}
-                  onClick={handleArticleClick(article, idx)}
+                  onClick={() => onClickViewDetailOA(article.id)}
                 />
               );
             })}

@@ -35,9 +35,9 @@
 	}
 	.product_main {
 		z-index: 9;
-		margin: -97px 4px 0;
+		margin: -110px 4px 0;
 		@include min_320 {
-			margin: -97px 16px 0;
+			margin: -110px 16px 0;
 		}
 		&.scroll_fixed {
 			margin: 0;
@@ -91,7 +91,7 @@
 	}
 }
 section.sec_module {
-	padding-bottom: 40px;
+	padding-bottom: 28px;
 	.heading {
 		display: flex;
 		align-items: center;

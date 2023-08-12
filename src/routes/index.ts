@@ -7,6 +7,7 @@ import ProfileDataInfoPage from '~/ui/pages/profile-data-info';
 import ProfileDataListPage from '~/ui/pages/profile-data-list';
 import BookingPage from '~/ui/pages/booking';
 
+import IntroductionPage from '~/ui/pages/introduction';
 
 export type RouteItem = {
   path: string;
@@ -41,5 +42,9 @@ export const APP_ROUTES: RouteItem[] = [
   {
     path: `${ROUTES.BOOKING}`,
     Element: BookingPage,
+  },
+  {
+    path: `${ROUTES.INTRODUCTION}`,
+    Element: IntroductionPage,
   },
 ];

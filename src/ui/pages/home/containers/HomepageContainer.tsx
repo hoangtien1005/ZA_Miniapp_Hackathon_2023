@@ -100,9 +100,13 @@ export const HomepageContainer = () => {
     handleOpenWebview(article.link);
   };
   const navigate = useAppNavigate();
-  useEffect(() => {
-    navigate(`${ROUTES.BOOKING}?id=1`);
-  }, [])
+  // useEffect(() => {
+  //   navigate(`${ROUTES.BOOKING}?id=1`);
+  // }, [])
+
+  const onClickViewDetailOA = (oaId) => {
+    navigate(`${ROUTES.BOOKING}?id=${oaId}`); 
+  }
   return (
     <>
       <EntriesHomeZone headerBanner={headerBanner} />
@@ -115,16 +119,16 @@ export const HomepageContainer = () => {
         banners={insuranceBanners}
         logos={insurancePartnerLogos}
       /> */}
-      <ArticleZoneSlider listOAType={LIST_OA_TYPE.FAVORITE} />
+      <ArticleZoneSlider listOAType={LIST_OA_TYPE.FAVORITE} onClickViewDetailOA={onClickViewDetailOA}/>
 
-      <ArticleZoneSlider listOAType={LIST_OA_TYPE.NEAREST} />
+      <ArticleZoneSlider listOAType={LIST_OA_TYPE.NEAREST} onClickViewDetailOA={onClickViewDetailOA}/>
 
-      <section className="sec_news">
+      <section className="sec_news mb-16">
         <div className="container">
           <OAArticleListVertical
             articles={pinnedArticles}
             containerClassName="mt-16"
-            handleArticleClick={handleHorizontalArticleClick}
+            handleArticleClick={handleHorizontalArticleClick} onClickViewDetailOA={onClickViewDetailOA}
           />
         </div>
       </section>

@@ -10,8 +10,7 @@ import ChatView from '~/ui/shared/Chat/ChatView';
 import InputSection from '~/ui/shared/Input/InputSection';
 
 const ChatContainer: FC = () => {
-  const { id } = useParams();
-
+  const { conversationId } = useParams();
   // const { data, loading, error } = useDocumentQuery(
   //   `conversation-${id}`,
   //   doc(db, "conversations", id as string)

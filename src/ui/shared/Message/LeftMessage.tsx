@@ -5,6 +5,7 @@ import { EMOJI_REGEX } from '~/constants';
 import { ConversationInfo, MessageItem } from '~/constants/interface';
 import ReplyBadge from '../Chat/ReplyBadge';
 import SpriteRenderer from '../SpriteRenderer';
+import { handleOpenWebview } from '~/utils/zalo.util';
 
 interface LeftMessageProps {
   message: MessageItem;
@@ -58,10 +59,8 @@ const LeftMessage: FC<LeftMessageProps> = ({
               <div
                 onClick={(e) => e.stopPropagation()}
                 title={formattedDate}
-                className={`bg-dark-lighten rounded-lg p-2 ${
-                  conversation.users.length === 2
-                    ? 'after:border-dark-lighten relative after:absolute after:right-full after:bottom-[6px] after:border-8 after:border-t-transparent after:border-l-transparent'
-                    : ''
+                className={`bg-[#F6F6F6] text-[#181818] rounded-lg p-2 ${
+                  conversation.users.length === 2 ? 'relative ' : ''
                 }`}
               >
                 {splitLinkFromMessage(message.content).map((item, index) => (
@@ -71,9 +70,11 @@ const LeftMessage: FC<LeftMessageProps> = ({
                     ) : (
                       <a
                         className="mx-1 inline underline"
-                        href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                          handleOpenWebview(item.link);
+                        }}
                       >
                         {item.link}
                       </a>

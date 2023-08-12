@@ -26,7 +26,7 @@ export function useGetNearestOAFoodQuery(params = {} as ParamsGetOAArticles) {
       })
     },
     select: (data) => {
-      return data;
+      return data.result;
     },
     staleTime: Infinity,
   });

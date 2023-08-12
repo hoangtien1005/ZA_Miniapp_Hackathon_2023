@@ -2,8 +2,8 @@ import { useSubmittedProfileService } from '~/adapters/app-service/profile.servi
 import { SubmittedProfileServiceApp } from '~/application/submittedProfile/ports';
 
 export interface BodyPostWithdrawProfileUsecase {
-  start_time: Date;
-  end_time: Date;
+  start_time: number;
+  end_time: number;
   store_id: number;
 }
 

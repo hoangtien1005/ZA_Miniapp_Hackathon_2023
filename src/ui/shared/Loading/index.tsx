@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Spinner } from 'zmp-ui';
 
-import { LoadingImg } from '~/ui/assets/images';
+import { LoadingImage } from '~/ui/assets/images';
 
 type LoadingProps = {};
 
@@ -11,13 +11,13 @@ const Loading = React.forwardRef((props: LoadingProps) => {
   return (
     <>
       <div className="modal_loading_page">
-        <Spinner visible />
-        {/* <div className="inner">
+        {/* <Spinner visible /> */}
+        <div className="inner">
           <div className="icon">
             {' '}
-            <img className="w-full" src={LoadingImg} alt="" />
+            <img className="w-full" src={LoadingImage} alt="" />
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

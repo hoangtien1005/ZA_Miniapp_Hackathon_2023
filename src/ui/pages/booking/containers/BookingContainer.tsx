@@ -55,8 +55,8 @@ const BookingContainer = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
     getBooking({
-      start_time: addMinutesToDate(getCurrentMidnightDate(), data.startTime).getTime(),
-      end_time: addMinutesToDate(getCurrentMidnightDate(), data.endTime).getTime(),
+      start_time: addMinutesToDate(getCurrentMidnightDate(), data.startTime * 30).getTime(),
+      end_time: addMinutesToDate(getCurrentMidnightDate(), data.endTime * 30).getTime(),
       store_id: data.storeId,
     })
   };

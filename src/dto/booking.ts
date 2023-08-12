@@ -6,8 +6,8 @@ export interface BookingDTO {
   oa_id: string;
   store_id: string;
   store_name: string;
-  start_time: string;
-  end_time: string;
+  start_time: number;
+  end_time: number;
   is_cancel: boolean;
   is_match: boolean;
   conversation_id: string;
@@ -16,7 +16,7 @@ export interface BookingDTO {
 const getBookingStatus = (dto: BookingDTO): BookingStatus => {
   if (dto.is_cancel) return BookingStatus.CANCEL;
   if (dto.is_match) return BookingStatus.MATCH;
-  if (new Date(dto.end_time) < new Date()) return BookingStatus.EXPIRED;
+  if (dto.end_time < Date.now()) return BookingStatus.EXPIRED;
   return BookingStatus.ACTIVE;
 };
 

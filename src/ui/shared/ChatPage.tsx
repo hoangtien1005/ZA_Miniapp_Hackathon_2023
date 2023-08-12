@@ -6,7 +6,7 @@ import { userProfileState } from '~/adapters/store/atoms/user';
 import InputSection from './Input/InputSection';
 import ChatHeader from './Chat/ChatHeader';
 import ChatView from './Chat/ChatView';
-import useConversation from '../hooks/use-conversation';
+import useConversation from '../hooks/use-chat';
 
 const Chat: FC = () => {
   const { id } = useParams();

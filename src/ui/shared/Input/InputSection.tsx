@@ -21,6 +21,7 @@ import { useParams } from 'react-router-dom';
 import { Icon, Spinner } from 'zmp-ui';
 import { useRecoilState } from 'recoil';
 import { userProfileState } from '~/adapters/store/atoms/user';
+import { useSocketService } from '~/adapters/app-service/socket.service';
 
 const Picker = lazy(() => import('./EmojiPicker'));
 
@@ -48,8 +49,10 @@ const InputSection: FC<InputSectionProps> = ({
   const [isAlertOpened, setIsAlertOpened] = useState(false);
   const [alertText, setAlertText] = useState('');
 
-  const { id: conversationId } = useParams();
+  const { conversationId } = useParams();
   const [currentUser] = useRecoilState(userProfileState);
+
+  const socketService = useSocketService();
 
   const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -93,26 +96,15 @@ const InputSection: FC<InputSectionProps> = ({
 
     const newMessage = {
       sender: currentUser?.uid,
+      token: currentUser?.accessToken,
+      conversationId,
       content: replacedInputValue.trim(),
       type: 'text',
       createdAt: Date.now(),
       replyTo: replyInfo?.id || null,
     };
 
-    console.log('add message', newMessage);
-
-    // TODO: update message
-    // addDoc(
-    //   collection(db, 'conversations', conversationId as string, 'messages'),
-    //   {
-    //     sender: currentUser?.uid,
-    //     content: replacedInputValue.trim(),
-    //     type: 'text',
-    //     createdAt: serverTimestamp(),
-    //     replyTo: replyInfo?.id || null,
-    //   }
-    // );
-
+    socketService.sendMessage('message', newMessage);
     updateTimestamp();
   };
 
@@ -121,11 +113,13 @@ const InputSection: FC<InputSectionProps> = ({
 
     const newMessage = {
       sender: currentUser?.uid,
+      token: currentUser?.accessToken,
+      conversationId,
       content: url,
       type: 'sticker',
       createdAt: Date.now(),
     };
-    console.log('add message', newMessage);
+    socketService.sendMessage('message', newMessage);
     // addDoc(
     //   collection(db, 'conversations', conversationId as string, 'messages'),
     //   {
@@ -177,22 +171,13 @@ const InputSection: FC<InputSectionProps> = ({
   const sendGif = (url: string) => {
     const newMessage = {
       sender: currentUser?.uid,
+      token: currentUser?.accessToken,
+      conversationId,
       content: url,
       type: 'image',
       createdAt: Date.now(),
     };
-    console.log('add message', newMessage);
-    // TODO: update message
-    // addDoc(
-    //   collection(db, 'conversations', conversationId as string, 'messages'),
-    //   {
-    //     sender: currentUser?.uid,
-    //     content: url,
-    //     type: 'image',
-    //     file: null,
-    //     createdAt: serverTimestamp(),
-    //   }
-    // );
+    socketService.sendMessage('message', newMessage);
   };
 
   useEffect(() => {

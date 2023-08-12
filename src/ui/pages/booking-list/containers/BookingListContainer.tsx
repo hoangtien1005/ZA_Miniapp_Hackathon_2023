@@ -32,16 +32,18 @@ const BookingListContainer = () => {
 
   useEffect(() => {
     bookingService
-      .getBookingList({
-        user_id: currentUser.uid,
-      })
+      .getBookingList()
       .then((data) => {
         const bookingList = data;
         const activeList = bookingList.filter(
-          (item) => item.status === BookingStatus.ACTIVE
+          (item) =>
+            item.status === BookingStatus.ACTIVE ||
+            item.status === BookingStatus.MATCH
         );
         const historyList = bookingList.filter(
-          (item) => item.status !== BookingStatus.ACTIVE
+          (item) =>
+            item.status === BookingStatus.CANCEL ||
+            item.status === BookingStatus.EXPIRED
         );
         setData({
           activeList,

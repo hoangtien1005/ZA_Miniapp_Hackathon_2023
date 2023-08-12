@@ -14,9 +14,9 @@ export interface BookingDTO {
 }
 
 const getBookingStatus = (dto: BookingDTO): BookingStatus => {
+  if (dto.end_time < Date.now()) return BookingStatus.EXPIRED;
   if (dto.is_cancel) return BookingStatus.CANCEL;
   if (dto.is_match) return BookingStatus.MATCH;
-  if (dto.end_time < Date.now()) return BookingStatus.EXPIRED;
   return BookingStatus.ACTIVE;
 };
 

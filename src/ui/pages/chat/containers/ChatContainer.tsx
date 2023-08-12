@@ -9,7 +9,7 @@ import { useConversation } from '~/ui/hooks/use-chat';
 import ChatHeader from '~/ui/pages/chat/components/Chat/ChatHeader';
 import ChatView from '~/ui/pages/chat/components/Chat/ChatView';
 import InputSection from '~/ui/shared/Input/InputSection';
-import BookingPin from '../components/BookingPin/BookingPin';
+import BookingPin from '../components/Chat/BookingPin';
 
 const ChatContainer: FC = () => {
   const { conversationId, bookingId } = useParams();
@@ -37,7 +37,7 @@ const ChatContainer: FC = () => {
     <div className="flex">
       {/* <SideBar /> */}
 
-      <div className="flex flex-grow flex-col items-stretch mt-[36px]">
+      <div className="flex flex-grow flex-col items-stretch mt-[36px] overflow-y-hidden">
         {loading ? (
           <>
             <div className="border-dark-lighten h-20 border-b"></div>

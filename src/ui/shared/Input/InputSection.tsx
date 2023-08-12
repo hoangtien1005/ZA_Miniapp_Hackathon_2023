@@ -71,9 +71,9 @@ const InputSection: FC<InputSectionProps> = ({
     return () => window.removeEventListener('focus', handler);
   }, []);
 
-  useEffect(() => {
-    textInputRef.current?.focus();
-  }, [conversationId]);
+  // useEffect(() => {
+  //   textInputRef.current?.focus();
+  // }, [conversationId]);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();

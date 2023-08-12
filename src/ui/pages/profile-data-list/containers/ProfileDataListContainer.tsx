@@ -25,24 +25,24 @@ import { useAppNavigate } from '~/ui/hooks';
 // import '~/ui/assets/scss/profile.scss';
 import Noti from '~/ui/shared/Noti';
 
-// const items = [
-//   {
-//     year: '2023',
-//     list: [1, 2, 3, 4],
-//   },
-//   {
-//     year: '2024',
-//     list: [1, 2, 3, 4],
-//   },
-//   {
-//     year: '2025',
-//     list: [1, 2],
-//   },
-//   {
-//     year: '2026',
-//     list: [1],
-//   },
-// ];
+const items = [
+  {
+    year: '2023',
+    list: [1, 2, 3, 4],
+  },
+  {
+    year: '2024',
+    list: [1, 2, 3, 4],
+  },
+  {
+    year: '2025',
+    list: [1, 2],
+  },
+  {
+    year: '2026',
+    list: [1],
+  },
+];
 const ProfileDataListContainer = () => {
   const navigate = useAppNavigate();
 
@@ -65,7 +65,7 @@ const ProfileDataListContainer = () => {
         />
 
         <Accordion allowZeroExpanded preExpanded={[0]}>
-          {submittedProfiles?.map((itemsByYear, key) => {
+          {items?.map((itemsByYear, key) => {
             return (
               // eslint-disable-next-line react/jsx-key
               <div className="group pt-24 group_data_list list_border_top">

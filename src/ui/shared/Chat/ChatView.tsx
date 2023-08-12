@@ -23,7 +23,7 @@ const ChatView: FC<ChatViewProps> = ({
   replyInfo,
   setReplyInfo,
 }) => {
-  const { id: conversationId } = useParams();
+  const { conversationId } = useParams();
 
   const [currentUser] = useRecoilState(userProfileState);
 
@@ -47,7 +47,8 @@ const ChatView: FC<ChatViewProps> = ({
 
   const { data } = useMessage('2');
 
-  console.log('data', data);
+  console.log(data);
+
 
   const dataRef = useRef(data);
   const conversationIdRef = useRef(conversationId);

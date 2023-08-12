@@ -30,4 +30,5 @@ export {
   BannerHomePlaceholderImg,
   RemoveDataImg,
   SubpageInsuranceImg,
+  FoodBannerImg,
 };

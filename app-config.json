@@ -1,0 +1,15 @@
+{
+  "app": {
+    "title": "za-miniapp-hackathon",
+    "headerTitle": "za-miniapp-hackathon",
+    "headerColor": "",
+    "textColor": "white",
+    "statusBarColor": "#3366FF",
+    "leftButton": "back",
+    "selfControlLoading": true
+  },
+  "debug": false,
+  "listCSS": [],
+  "listSyncJS": [],
+  "listAsyncJS": []
+}

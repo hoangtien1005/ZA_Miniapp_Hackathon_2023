@@ -1,0 +1,18 @@
+.empty  {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	text-align: center;
+	&:before {
+		background-image: url(/src/ui/assets/images/empty.png);
+		width: 72px;
+		height: 72px;
+		display: block;
+		content: "";
+		margin-bottom: 10px;
+		margin-left: auto;
+		margin-right: auto;
+		background-size: 100%;
+	}
+}

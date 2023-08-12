@@ -1,0 +1,89 @@
+
+// @import "var";
+@import "mixin";
+@import "var";
+.trim {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	&.trim_1 {
+		-webkit-line-clamp: 1;
+	}
+	&.trim_2 {
+		-webkit-line-clamp: 2;
+	}
+	&.trim_3 {
+		-webkit-line-clamp: 3;
+	}
+	&.trim_4 {
+		-webkit-line-clamp: 4;
+	}
+}
+.text_limit {
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+strong {font-weight: 500;}
+.color {
+	&_main {color: $color-main;}
+	&_red {color: $red;}
+	&_green {color: $green;}
+	&_text {
+		&_300 {color: $gray_500;}
+		&_400 {color: $text_400;}
+		&_500 {color: $text_500;}
+		&_700 {color: $text_700;}
+		&_900 {color: $text_900;}
+	}
+	&_blue {
+		&_500 {color: $color-main};
+		&_400 {color: $blue_400};
+		&_300 {color: $blue_300};
+		&_200 {color: $blue_200};
+		&_100 {color: $blue_100};
+		&_50 {color: $blue_50};
+	}
+}
+.fz {
+	&-22 {
+		font-size: 22px;
+		line-height: 28px;
+	}
+	&-20 {
+		font-size: 20px;
+		line-height: 24px;
+	}
+	&-18 {
+		font-size: 18px;
+		line-height: 21px;
+	}
+	&-16 {
+		font-size: 16px;
+		line-height: 22px;
+	}
+	&-14 {
+		font-size: 14px;
+		line-height: 20px;
+	}
+	&-12 {
+		font-size: 12px;
+		line-height: 15px;
+	}
+	&-10 {
+		font-size: 10px;
+		line-height: 12px;
+	}
+}
+.fw {
+	&-500 {font-weight: 500;}
+	&-700 {font-weight: 700;}
+}
+.text {
+  &-left {text-align: left;}
+  &-center {text-align: center;}
+  &-right {text-align: right;}
+}

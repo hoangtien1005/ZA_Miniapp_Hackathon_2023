@@ -1,0 +1,21 @@
+// @import "var";
+@import "common/mixin";
+@import "common/var";
+
+// Include lib slick
+@import "lib/slick/slick";
+@import "lib/slick/slick-theme";
+@import "lib/slick/custom";
+
+// Include lib slick
+@import "component/banner";
+
+.module_insurances {
+  background-color: $ana_20;
+  padding: 24px 0;
+
+  .imgDrop {
+    padding-top: 601px;
+    min-height: calc(100vh - 30px - 45px - 68px - 68px);
+  }
+}

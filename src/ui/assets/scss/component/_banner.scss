@@ -1,0 +1,12 @@
+.banner_slider {
+	&.height {
+		&_160 .imgDrop {padding-top: 160/343*100%;}
+		&_104 .imgDrop {padding-top: 104/343*100%;}
+	}
+	.slick-dots {
+		bottom: 7px;
+		height: 3px;
+		display: flex!important;
+		justify-content: center;
+	}
+}

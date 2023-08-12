@@ -1,0 +1,43 @@
+.list_link {
+	li {
+		padding: 16px 40px 16px 16px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		.images {
+		  width: 40px;
+		  height: 40px;
+		  margin-right: 8px;
+		  flex-shrink: 0;
+		  border-radius: 8px;
+		  overflow: hidden;
+		  display: flex;
+		  align-items: center;
+		  img {
+		    display: block;
+		    max-width: 100%;
+		    height: auto;
+		  }
+		}
+		.icon {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 8px;
+			@include min_320 {
+				right: 16px;
+			}
+		}
+		&+ li {
+			border-top: 1px solid $text_300;
+		}
+	}
+	&.px-16 {
+	  li {
+	    padding: 16px 24px 16px 0;
+	    .icon { 
+	      right: 0;
+	    }
+	  }
+	}
+}

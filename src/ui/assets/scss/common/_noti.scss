@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "mixin";
+@import "var";
+
+.block_noti {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  display: flex;
+  .icon {
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  .content {
+    width: 100%;
+    color: $text_700;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  &_red {
+    border-color: $second_100;
+    background-color: $second_50;
+  }
+  &_blue {
+    border-color: $blue_100;
+    background-color: $blue_50;
+  }
+}

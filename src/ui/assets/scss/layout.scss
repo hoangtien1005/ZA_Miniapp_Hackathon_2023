@@ -1,0 +1,47 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css');
+// Core variables and mixins bourbon
+// Reset
+// @import "common/reset";
+// @import "spacing";
+
+// Component
+// @import "component";
+@import "common/mixin";
+@import "common/var";
+@import "common/icon";
+@import "common/scrollbar";
+@import "common/space";
+@import "common/flex";
+@import "common/bg";
+@import "common/font";
+@import "common/text";
+@import "common/btn";
+@import "common/noti";
+@import "common/status";
+@import "common/form";
+@import "common/list";
+@import "common/list_link";
+@import "common/dropdown";
+@import "common/tooltip";
+@import "common/popover";
+@import "common/common";
+
+// Component
+// @import "plugins/daterangepicker";
+@import "component/loading_page";
+@import "component/breadcrumb";
+@import "component/nav_footer";
+@import "component/modal";
+@import "component/empty";
+@import "component/form";
+@import "component/module_box";
+
+// Page
+// @import "page/home";
+// @import "page";
+// @import "module";
+// @import "component/modal";
+
+// Commnet lai file nay khi build file cho NextJs
+// @import "./notUseForNext.scss";
+

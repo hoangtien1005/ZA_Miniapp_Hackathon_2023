@@ -1,0 +1,23 @@
+.modal_loading_page {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .inner {
+    width: 400px;
+  }
+  .inner_introduction {
+    width: 270px;
+    // height: calc(100vh - 75px - 68px);
+    // img{
+    //   height: 100%;
+    // }
+    position: relative;
+    top: -50px;
+  }
+}

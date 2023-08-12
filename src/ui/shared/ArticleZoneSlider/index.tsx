@@ -90,9 +90,9 @@ export const ArticleZoneSlider: React.FC<ArticleZoneProps> = ({ listOAType, onCl
             articles.map((article, idx) => {
               return (
                 <OAArticleItem
-                  key={article.id}
+                  key={article.oa_id}
                   article={article}
-                  onClick={() => onClickViewDetailOA(article.id)}
+                  onClick={() => onClickViewDetailOA(article.oa_id)}
                 />
               );
             })}

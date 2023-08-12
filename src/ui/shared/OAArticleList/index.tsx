@@ -25,7 +25,7 @@ export const OAArticleListVertical: React.FC<OAArticleListProps> = ({
           <div
             key={article.oa_id}
             className="news_item news_item_list mt-16"
-            onClick={() => onClickViewDetailOA(article.id)}
+            onClick={() => onClickViewDetailOA(article.oa_id)}
           >
             <div className="images">
               <div className="imgDrop">

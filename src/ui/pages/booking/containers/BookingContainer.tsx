@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DetailImg, DetailVoucherImg } from '~/ui/assets/images';
 
 import '~/ui/assets/scss/profile.scss';
@@ -16,6 +16,8 @@ import { useGetOAByIdQuery } from '~/application/oa/useGetOAById.usecase';
 import { useParams } from 'react-router-dom';
 import ROUTES from '~/constants/routes';
 import { useSnackbar } from "zmp-ui";
+import api from 'zmp-sdk';
+import Slider from 'react-slick';
 
 interface IFormInput {
   // date: Date;
@@ -83,7 +85,7 @@ const BookingContainer = () => {
   const handleSelectStoreId = (value: string, label: string) => {
     // @ts-ignore
     setStoreId({ value, label });
-    setValue('storeId', +value);
+    setValue('storeId', value);
     trigger('storeId');
   };
 
@@ -101,31 +103,55 @@ const BookingContainer = () => {
     trigger('endTime');
   };
 
-  // const { id } = useParams();
+  const { id } = api.getRouteParams();
 
 
-  // const {data} = useGetOAByIdQuery({id});
+  const queryData = useGetOAByIdQuery({ id });
+  const data = queryData?.data?.[id];
+
+  const watchStartTime = watch('startTime');
+
+  const sliderConfig = {
+    infinite: true,
+    dots: true,
+    arrows: false,
+    fade: true,
+    slidesToShow: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
+  };
 
   return (
     <>
       <section className="sec_booking">
         <div className="con">
-          <img className="oa-img" src={DetailImg} />
+          <img className="oa-img" src={data?.cover} />
           <div className='info-zone'>
             <div className="oa-info">
-              <h1>Black cat Catering</h1>
-              <p>Chúng tôi Blackcat catering chuyên cung cấp dịch vụ ăn uống, căn tin, food court cho các công ty, trường học, nhà hàng. </p>
+              <h1>{data?.oa_name}</h1>
+              <p>{data?.oa_description} </p>
             </div>
+
+
             <div className="vouchers">
               <h2>Khuyến mãi hôm nay</h2>
 
-              <div className="detail">
-                <img src={DetailVoucherImg} />
-                <div>
-                  <h3>Giảm 20% trên giá món</h3>
-                  <p>Giảm 20% khi đi chung với bạn của Ú Meal</p>
-                </div>
-              </div>
+              <Slider
+                {...sliderConfig}
+                className={classNames(
+                  'insu_slider slider',
+                  data?.vouchers?.length > 1 && 'slick-dotted',
+                )}
+              >
+                {data?.vouchers?.map((item) => (<div className="detail" style={{ display: "inline-block" }}>
+                  <img style={{ display: "flex" }} src={DetailVoucherImg} />
+                  <div>
+                    <h3>{item.voucher_name}</h3>
+                    <p>{item.voucher_description}</p>
+                  </div>
+                </div>))}
+              </Slider>
+
             </div>
 
 
@@ -152,7 +178,10 @@ const BookingContainer = () => {
                   registerOption={validateSchema.storeId}
                   name="storeId"
                   // @ts-ignore
-                  listOption={autoTypeOptions}
+                  listOption={data?.stores?.map((item) => ({
+                    label: item.address,
+                    value: item.store_id,
+                  }))}
                   onClickItem={handleSelectStoreId}
                   error={errors.storeId?.message}
                 />
@@ -212,7 +241,7 @@ const BookingContainer = () => {
                   registerOption={validateSchema.endTime}
                   name="endTime"
                   // @ts-ignore
-                  listOption={timeOptions}
+                  listOption={watchStartTime ? timeOptions.filter((item) => item.value > watchStartTime) : timeOptions}
                   onClickItem={handleSelectEndTime}
                   error={errors.endTime?.message}
 
@@ -242,7 +271,7 @@ const BookingContainer = () => {
             </div> */}
 
               <button
-                className="btn btn-primary w-100"
+                className={`btn btn-primary w-100 ${isValid ? "" : "disabled"}`}
                 type="submit"
               >
                 Tìm người ăn chung

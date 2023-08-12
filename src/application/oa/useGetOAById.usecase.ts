@@ -7,7 +7,7 @@ import { oaArticleFromDTO } from '~/dto/article';
 import { fetchWithGlobalLoading } from '~/ui/hofs/fetch-with-global-loading';
 
 export interface ParamsGetOAArticles {
-  id: number;
+  id: string;
 }
 
 export function useGetOAByIdQuery(params = {} as ParamsGetOAArticles) {

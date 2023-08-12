@@ -74,7 +74,7 @@ const BookingContainer = () => {
         text: "Tạo cuộc hẹn thành công",
         type: "success",
       });
-      setTimeout(() => navigate(ROUTES.BOOKING_LIST), 2000);
+      // setTimeout(() => navigate(ROUTES.BOOKING_LIST), 2000);
     })
   };
 
@@ -241,7 +241,8 @@ const BookingContainer = () => {
                   registerOption={validateSchema.endTime}
                   name="endTime"
                   // @ts-ignore
-                  listOption={watchStartTime ? timeOptions.filter((item) => item.value > watchStartTime) : timeOptions}
+                  disabled={!watchStartTime}
+                  listOption={watchStartTime && timeOptions.filter((item) => item.value > watchStartTime)}
                   onClickItem={handleSelectEndTime}
                   error={errors.endTime?.message}
 

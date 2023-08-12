@@ -32,6 +32,7 @@ import Animal7Img from '~/ui/assets/images/animal/7.png';
 import Animal8Img from '~/ui/assets/images/animal/8.png';
 import Animal9Img from '~/ui/assets/images/animal/9.jpg';
 import ThreeDotImg from '~/ui/assets/images/three_dot.png';
+import WarningExclamationImg from '~/ui/assets/images/warning_exclamation.png';
 
 export {
   NavDiscoverOnImg,
@@ -66,4 +67,5 @@ export {
   Animal8Img,
   Animal9Img,
   ThreeDotImg,
+  WarningExclamationImg
 };

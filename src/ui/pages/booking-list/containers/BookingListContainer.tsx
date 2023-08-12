@@ -11,10 +11,20 @@ import { useRecoilState } from 'recoil';
 import { v4 as uuidv4 } from 'uuid';
 import { useBookingService } from '~/adapters/app-service/booking.service';
 import { userProfileState } from '~/adapters/store/atoms/user';
+import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
 import ROUTES from '~/constants/routes';
 import { Booking, BookingStatus } from '~/domain/booking';
+import { ThreeDotImg } from '~/ui/assets/images';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { useAppNavigate } from '~/ui/hooks';
+
+const getIndex = (id?: string) => {
+  if (!id) {
+    return 0;
+  }
+  const index = (id + '')?.split('')?.pop();
+  return index || 0;
+};
 
 const BookingListContainer = () => {
   const navigate = useAppNavigate();
@@ -56,6 +66,7 @@ const BookingListContainer = () => {
   }, []);
 
   const handleViewChat = (item: Booking) => {
+    console.log('item', item);
     navigate(`${ROUTES.CHAT}/${item.conversationId}/${item.bookingId}`, {
       animate: false,
     });
@@ -81,40 +92,37 @@ const BookingListContainer = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <ul className="list_link">
-                    {data.activeList?.map((item) => {
+                    {data.activeList?.map((item, index) => {
                       return (
                         <li
                           key={uuidv4()}
-                          className="flex module_box mt-16 gap-16 flex-midle"
+                          className="flex module_box gap-16 flex-midle justify-between"
                           onClick={() => handleViewChat(item)}
                         >
-                          <div className="images_drop w-72">
-                            {/* <img src={item.imageUrl} /> */}
-                            <img src="https://picsum.photos/200" />
-                          </div>
-                          <div className="des fz-12">
-                            <div className="ttl_item fw-700">
-                              {item?.storeName}
+                          <div className="flex gap-16 flex-midle">
+                            <div className="images_drop w-72">
+                              <img src={ANONYMOUS_AVATARS[getIndex()]} />
                             </div>
-                            <div className="status mt-4 color_text_700">
-                              Trạng thái:
-                              {/* <span
-                                className={classNames(
-                                  'ml-4',
-                                  item.stateClassName
-                                )}
-                              >
-                                {item?.storeName}
-                              </span> */}
-                              <span className="status_wait ml-4">
-                                Đang xử lý
-                              </span>
-                              <span className="status_fail ml-4">Thất bại</span>
-                              <span className="status_done ml-4">Hoàn tất</span>
+                            <div className="des fz-12">
+                              <h1 className="text-sub text-lg">
+                                {ANONYMOUS_NAMES[getIndex()]}
+                              </h1>
+                              <div className="mt-4">
+                                <span className="ml-4">
+                                  Tại Chi nhánh quận {index + 1}
+                                </span>
+                              </div>
+                              <div className="mt-4">
+                                <span className="text-primary ml-4">
+                                  30 phút nữa
+                                </span>
+                                {/* <span className="status_fail ml-4">Thất bại</span> */}
+                                {/* <span className="status_done ml-4">Hoàn tất</span> */}
+                              </div>
                             </div>
                           </div>
-                          <div className="icon sz-14">
-                            <i className="icon_right_blue" />
+                          <div className="icon">
+                            <img src={ThreeDotImg} />
                           </div>
                         </li>
                       );
@@ -137,40 +145,37 @@ const BookingListContainer = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <ul className="list_link">
-                    {data.historyList?.map((item) => {
+                    {data.historyList?.map((item, index) => {
                       return (
                         <li
                           key={uuidv4()}
-                          className="flex module_box mt-16 gap-16 flex-midle"
+                          className="flex module_box gap-16 flex-midle justify-between"
                           onClick={() => handleViewChat(item)}
                         >
-                          <div className="images_drop w-72">
-                            {/* <img src={item.imageUrl} /> */}
-                            <img src="https://picsum.photos/200" />
-                          </div>
-                          <div className="des fz-12">
-                            <div className="ttl_item fw-700">
-                              {item?.storeName}
+                          <div className="flex gap-16 flex-midle">
+                            <div className="images_drop w-72">
+                              <img src={ANONYMOUS_AVATARS[getIndex()]} />
                             </div>
-                            <div className="status mt-4 color_text_700">
-                              Trạng thái:
-                              {/* <span
-                                className={classNames(
-                                  'ml-4',
-                                  item.stateClassName
-                                )}
-                              >
-                                {item?.storeName}
-                              </span> */}
-                              <span className="status_wait ml-4">
-                                Đang xử lý
-                              </span>
-                              <span className="status_fail ml-4">Thất bại</span>
-                              <span className="status_done ml-4">Hoàn tất</span>
+                            <div className="des fz-12">
+                              <h1 className="text-sub text-lg">
+                                {ANONYMOUS_NAMES[getIndex()]}
+                              </h1>
+                              <div className="mt-4">
+                                <span className="ml-4">
+                                  Tại Chi nhánh quận {index + 1}
+                                </span>
+                              </div>
+                              <div className="mt-4">
+                                <span className="text-primary ml-4">
+                                  30 phút nữa
+                                </span>
+                                {/* <span className="status_fail ml-4">Thất bại</span> */}
+                                {/* <span className="status_done ml-4">Hoàn tất</span> */}
+                              </div>
                             </div>
                           </div>
-                          <div className="icon sz-14">
-                            <i className="icon_right_blue" />
+                          <div className="icon">
+                            <img src={ThreeDotImg} />
                           </div>
                         </li>
                       );

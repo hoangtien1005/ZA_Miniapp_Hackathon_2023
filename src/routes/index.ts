@@ -1,5 +1,6 @@
 import ROUTES from '~/constants/routes';
 import ChatPage from '~/ui/pages/chat';
+import BookingListPage from '~/ui/pages/booking-list';
 import HomePage from '~/ui/pages/home';
 import ProfilePage from '~/ui/pages/profile';
 import ProfileDataInfoPage from '~/ui/pages/profile-data-info';
@@ -18,8 +19,12 @@ export const APP_ROUTES: RouteItem[] = [
     Element: HomePage,
   },
   {
-    path: ROUTES.CHAT,
+    path: `${ROUTES.CHAT}/:conversationId`,
     Element: ChatPage,
+  },
+  {
+    path: ROUTES.BOOKING_LIST,
+    Element: BookingListPage,
   },
   {
     path: ROUTES.PROFILE,

@@ -30,8 +30,8 @@ export const BOTTOM_NAV_ITEMS = {
     {
       imageSrc: NavDiscoverOnImg,
       text: 'Cuộc hẹn',
-      url: ROUTES.CHAT,
-      name: 'CHAT',
+      url: ROUTES.BOOKING_LIST,
+      name: 'BOOKING_LIST',
     },
     {
       imageSrc: NavProfileOnImg,

@@ -7,6 +7,7 @@ import { MessageItem } from '~/constants/interface';
 import ReplyBadge from '../Chat/ReplyBadge';
 import ImageView from '../ImageView';
 import SpriteRenderer from '../SpriteRenderer';
+import { handleOpenWebview } from '~/utils/zalo.util';
 
 interface RightMessageProps {
   message: MessageItem;
@@ -68,7 +69,7 @@ const RightMessage: FC<RightMessageProps> = ({ message, setReplyInfo }) => {
               <div
                 onClick={(e) => e.stopPropagation()}
                 title={formattedDate}
-                className={`bg-primary after:border-primary relative rounded-lg p-2 after:absolute after:left-full after:bottom-[6px] after:border-8 after:border-t-transparent after:border-r-transparent`}
+                className={`bg-primary text-white relative rounded-lg p-2`}
               >
                 {splitLinkFromMessage(message.content).map((item, index) => (
                   <Fragment key={index}>
@@ -77,9 +78,11 @@ const RightMessage: FC<RightMessageProps> = ({ message, setReplyInfo }) => {
                     ) : (
                       <a
                         className="mx-1 inline underline"
-                        href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                          handleOpenWebview(item.link);
+                        }}
                       >
                         {item.link}
                       </a>

@@ -64,6 +64,20 @@ export const handleOpenMiniApp = async ({ appId, path, params }) => {
   });
 };
 
+export const handleCloseLoading = async () => {
+  return new Promise((resolve, reject) => {
+    api.closeLoading({
+      success: () => {
+        resolve('');
+      },
+      fail: (error) => {
+        reject(error);
+        console.log('Open miniapp error', error);
+      },
+    });
+  });
+};
+
 export const handleOpenViewPdf = async (fileUrl) => {
   const viewPdfUrl = buildURLWithParam(BASE_URL_PDF, {
     file: fileUrl,

@@ -4,7 +4,7 @@ const ROUTES = {
   PROFILE: '/profile',
   PROFILE_DATA_LIST: '/profile-data-list',
   PROFILE_DATA_INFO: '/profile-data-info',
-  
+  BOOKING: '/booking',
 };
 
 export const mappingTitleFromRoute: any = {
@@ -13,6 +13,7 @@ export const mappingTitleFromRoute: any = {
   [ROUTES.PROFILE]: 'Profile',
   // [ROUTES.PROFILE]: 'Cá nhân',
   [ROUTES.PROFILE_DATA_LIST]: 'Profile',
+  [ROUTES.BOOKING]: 'Food Court',
 };
 
 export const mappingDefaultPreviousRoute = {

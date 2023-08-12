@@ -8,6 +8,7 @@ import useInterval from './use-interval';
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect';
 import useModal from './use-modal';
 import useOuterClick from './use-outer-click';
+import useSheet from './use-sheet';
 
 export {
   useBoolean,
@@ -21,4 +22,5 @@ export {
   useDebounce,
   useAppNavigate,
   useAppNavigateBack,
+  useSheet,
 };

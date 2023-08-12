@@ -14,6 +14,10 @@ import RemoveDataImg from '~/ui/assets/images/remove_data.png';
 // import NavProfileOffImg from '~/ui/assets/images/nav/nav_profile.svg';
 import SubpageInsuranceImg from '~/ui/assets/images/subpage_ins.png';
 import FoodBannerImg from '~/ui/assets/images/food-banner.png';
+import DetailImg from '~/ui/assets/images/detail-img.png';
+import DetailVoucherImg from '~/ui/assets/images/detail-voucher.png';
+import LogoSearchImage from '~/ui/assets/images/logo_search.png';
+
 
 export {
   NavDiscoverOnImg,
@@ -30,4 +34,8 @@ export {
   BannerHomePlaceholderImg,
   RemoveDataImg,
   SubpageInsuranceImg,
+  FoodBannerImg,
+  DetailImg,
+  DetailVoucherImg,
+  LogoSearchImage,
 };

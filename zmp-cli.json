@@ -8,7 +8,7 @@
   "template": "blank",
   "includeTailwind": false,
   "theming": {
-    "color": "#007aff",
+    "color": "#ffffff",
     "darkTheme": false,
     "fillBars": false
   },

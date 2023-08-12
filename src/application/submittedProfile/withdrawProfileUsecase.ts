@@ -2,14 +2,15 @@ import { useSubmittedProfileService } from '~/adapters/app-service/profile.servi
 import { SubmittedProfileServiceApp } from '~/application/submittedProfile/ports';
 
 export interface BodyPostWithdrawProfileUsecase {
-  lead_uuid: string | undefined;
-  lead_type: number | undefined;
+  start_time: Date;
+  end_time: Date;
+  store_id: number;
 }
 
-export async function WithdrawProfileUsecase(
+export async function getBooking(
   body: BodyPostWithdrawProfileUsecase
 ) {
-  const submittedProfileService: SubmittedProfileServiceApp =
+  const submittedProfileService =
     useSubmittedProfileService();
-  return submittedProfileService.withdrawProfile(body);
+  return submittedProfileService.getBooking(body);
 }

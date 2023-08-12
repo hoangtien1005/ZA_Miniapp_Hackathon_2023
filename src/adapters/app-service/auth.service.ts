@@ -53,7 +53,7 @@ class AuthService extends BaseApiService {
   login(): Promise<any> {
     return new Promise<any>(async (resolve, reject) => {
       let zaloToken = (await this._getAccessToken()) as string;
-      if (!appConfig.isProd) zaloToken = '4dnQTMGyNKqIVbbmOJnPI15pMdLZApyDHnTePq0s6ryoTcTY6pLWEYm91G0zJ7en0Gyu2W0kHJ9_BYvAQ1TQ3s42A4jX15CwO1WtVXuMHm482nL40aiKU0TyNHyKOZb0EonB3oy3JJuF8YXuApyi9bmUU4mYMG0EBtnGNZjPCWmKMqT3Vtyo6WayItn_EoyVSNzjBtvCRnTC3X1lHY5BIcaS8szTCrGiMNGzHKLsV2axNmT8C15oDn8gT5qSBJ5u5I5f6sOE45jNBaeOSW4N97CKQMPj6muS7Gy9Maz6TZ48O2HOH0';
+      if (!appConfig.isProd) zaloToken = 'xqmB9YtAhYllJWWZACggBkn32oOgtQXlg1za7XYVmXESG6Pu1gN34uLz1LmP-xi8etv31JoYw0oOH0a2E86gNAXuRISNehbBeaT-BmU6cKIJUs193uwqFyvGGbjVq9e7pn0uQ6BPdJ3YBKjWUi--2EucT5TkoQK7nWDf2WVUp7wNFHaL7VkuUveeVGfPrfiFtZHYTrMseGUVScfF3_NABPec06a1yk0CfoSaS0hFr7YgBNHr3iAK2eW0IL0FwUjLbZO9AYVgwII2E0XZHk3_Cu0SMrjAn8Cryon5J_AmapqfqgiY';
       if (zaloToken) {
         const profileUser = await this.loginFiza(zaloToken);
         if (profileUser) {

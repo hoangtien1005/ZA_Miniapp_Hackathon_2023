@@ -16,8 +16,12 @@
 		line-height: 52px;
 	}
 	&-primary {
-		background-color: $color-main;
+		background-color: #F89945;
 		color: #fff;
+    height: 59px;
+    border-radius: 15px;
+    padding: 16px;
+    line-height: 16px;
 		&.disabled {
 			background-color: $text_400;
 			pointer-events: none;

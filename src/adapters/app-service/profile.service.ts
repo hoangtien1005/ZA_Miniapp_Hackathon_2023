@@ -36,19 +36,16 @@ class SubmittedProfileService extends BaseApiService {
       });
   }
 
-  withdrawProfile(body: {
-    lead_uuid: string;
-    lead_type: CONSENT_PROFILE_LEAD_TYPE;
-  }) {
-    const path = 'consent/profiles/withdraw';
+  getBooking(body: any) {
+    const path = 'booking/book';
     return super
-      .post(this.generateUrl(path), {}, body)
+      .post(this.generateUrl(path, 'https://zah-4.123c.vn/api'), {}, body)
       .then((res) => {
         return res;
       })
       .catch((err) => {
         if (err) {
-          console.log('Error withdraw processed leads: ', err);
+          console.log('Error book: ', err);
         }
         return [];
       });

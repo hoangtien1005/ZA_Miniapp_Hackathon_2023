@@ -40,7 +40,13 @@ const IntroductionContainer = () => {
         <div className="inner_introduction">
           <div className="icon">
             {' '}
-            <img className="w-full" src={IntroductionImage} alt="" onClick={() => navigate(ROUTES.HOME)}/>
+            <img className="w-full" src={IntroductionImage} alt="" />
+            <button
+                className={`btn btn-primary w-100 btn-intro`}
+                onClick={() => navigate(ROUTES.HOME)}
+              >
+                Tiếp theo
+              </button>
           </div>
         </div>
       </div>

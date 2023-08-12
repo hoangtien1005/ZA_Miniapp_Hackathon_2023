@@ -26,6 +26,12 @@
 			background-color: $text_400;
 			pointer-events: none;
 		}
+    &.btn-intro{
+      font-size: 14px;
+      padding: 12px;
+      height: auto;
+      margin-top: 16px;
+    }
 	}
 	&-red {
 	  background-color: #FF4B38;

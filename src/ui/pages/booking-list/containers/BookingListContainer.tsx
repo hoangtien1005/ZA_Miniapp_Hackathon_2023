@@ -1,34 +1,26 @@
 import React, { useEffect, useState } from 'react';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import classNames from 'classnames';
 import {
   Accordion,
   AccordionItem,
-  AccordionItemHeading,
   AccordionItemButton,
+  AccordionItemHeading,
   AccordionItemPanel,
-  AccordionItemState,
 } from 'react-accessible-accordion';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { useRecoilState } from 'recoil';
 import { v4 as uuidv4 } from 'uuid';
-
-// eslint-disable-next-line import/order
-import { useGetSubmittedProfilesByQuery } from '~/application/submittedProfile/useGetSubmittedProfilesByQuery.usecase';
-
-// import { useRecoilState, useRecoilValue } from 'recoil';
+import { useBookingService } from '~/adapters/app-service/booking.service';
+import { userProfileState } from '~/adapters/store/atoms/user';
 import ROUTES from '~/constants/routes';
-// import { SubmittedProfile } from '~/domain/submittedProfile';
-// import LOG from '~/log';
+import { Booking, BookingStatus } from '~/domain/booking';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { useAppNavigate } from '~/ui/hooks';
-// import '~/ui/assets/scss/profile.scss';
-import Noti from '~/ui/shared/Noti';
-import { Booking, BookingStatus } from '~/domain/booking';
-import { mockBooking } from '~/mock/booking.mock';
 
 const BookingListContainer = () => {
   const navigate = useAppNavigate();
+
+  const bookingService = useBookingService();
+  const [currentUser] = useRecoilState(userProfileState);
 
   const [data, setData] = useState<{
     activeList: Booking[];
@@ -39,10 +31,12 @@ const BookingListContainer = () => {
   });
 
   useEffect(() => {
-    mockBooking()
-      .getBookingList()
-      .then((res) => {
-        const bookingList = res.data;
+    bookingService
+      .getBookingList({
+        user_id: currentUser.uid,
+      })
+      .then((data) => {
+        const bookingList = data;
         const activeList = bookingList.filter(
           (item) => item.status === BookingStatus.ACTIVE
         );
@@ -53,6 +47,9 @@ const BookingListContainer = () => {
           activeList,
           historyList,
         });
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 

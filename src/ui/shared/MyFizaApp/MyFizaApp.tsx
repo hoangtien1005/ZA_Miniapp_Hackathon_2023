@@ -13,6 +13,7 @@ import { handleCacheGlobalData } from '~/application/app/useCacheGlobalData';
 import { useLogin } from '~/application/auth/useLogin';
 import useEffectOnce from '~/ui/hooks/use-effect-once';
 import { generateId } from '~/utils/common.util';
+import { handleCloseLoading } from '~/utils/zalo.util';
 
 function MyFizaApp({ children }) {
   const appService = useAppService();
@@ -25,6 +26,10 @@ function MyFizaApp({ children }) {
     const queryParams = appService.getQueryParams();
     const sessionId = generateId();
     // setTracking({ ...tracking, ...queryParams, session_id: sessionId });
+  }, []);
+
+  useEffect(() => {
+    handleCloseLoading();
   }, []);
 
   useEffectOnce(() => {

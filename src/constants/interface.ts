@@ -12,9 +12,10 @@ export interface ConversationInfo {
   updatedAt: string;
   theme: string;
 }
-
 export interface MessageItem {
   id?: string;
+  token?: string;
+  conversationId: string;
   sender: string;
   content: string;
   replyTo?: string;

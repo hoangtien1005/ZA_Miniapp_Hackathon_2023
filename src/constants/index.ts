@@ -1,4 +1,16 @@
 import {
+  Animal0Img,
+  Animal1Img,
+  Animal2Img,
+  Animal3Img,
+  Animal4Img,
+  Animal5Img,
+  Animal6Img,
+  Animal7Img,
+  Animal8Img,
+  Animal9Img,
+} from '~/ui/assets/images';
+import {
   GROUP_STATE_CARD_AND_LOAN,
   JOB_STATUS_TYPE,
   PRODUCT_TYPE,
@@ -320,4 +332,30 @@ export const THEMES = [
   '#B43F3F',
   '#E6A50A',
   '#69C90C',
+];
+
+export const ANONYMOUS_NAMES = [
+  'Ngựa he',
+  'Cá mập ăn thịt',
+  'Koala nhỏ nhắn',
+  'Cú mèo béo',
+  'Lạc đà bướng bỉnh',
+  'Mèo đi hia',
+  'Cáo đỏ',
+  'Khỉ đột vui vẻ',
+  'Lười ham ngủ',
+  'Rắn độc thâm hiểm',
+];
+
+export const ANONYMOUS_AVATARS = [
+  Animal0Img,
+  Animal1Img,
+  Animal2Img,
+  Animal3Img,
+  Animal4Img,
+  Animal5Img,
+  Animal6Img,
+  Animal7Img,
+  Animal8Img,
+  Animal9Img,
 ];

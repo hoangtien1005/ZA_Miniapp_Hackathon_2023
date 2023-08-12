@@ -2,17 +2,17 @@ import React, { FC, useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { useChatService } from '~/adapters/app-service/chat.service';
 import { useSocketService } from '~/adapters/app-service/socket.service';
 import { userProfileState } from '~/adapters/store/atoms/user';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { useConversation } from '~/ui/hooks/use-chat';
-import ChatHeader from '~/ui/shared/Chat/ChatHeader';
-import ChatView from '~/ui/shared/Chat/ChatView';
+import ChatHeader from '~/ui/pages/chat/components/Chat/ChatHeader';
+import ChatView from '~/ui/pages/chat/components/Chat/ChatView';
 import InputSection from '~/ui/shared/Input/InputSection';
+import BookingPin from '../components/BookingPin/BookingPin';
 
 const ChatContainer: FC = () => {
-  const { conversationId } = useParams();
+  const { conversationId, bookingId } = useParams();
   const { data, loading, error } = {
     data: [],
     loading: false,
@@ -21,6 +21,8 @@ const ChatContainer: FC = () => {
 
   const { conversation } = useConversation({ conversationId });
   const [currentUser] = useRecoilState(userProfileState);
+  const [inputSectionOffset, setInputSectionOffset] = useState(0);
+  const [replyInfo, setReplyInfo] = useState(null);
 
   const socketService = useSocketService();
 
@@ -31,15 +33,11 @@ const ChatContainer: FC = () => {
     });
   }, []);
 
-  const [inputSectionOffset, setInputSectionOffset] = useState(0);
-
-  const [replyInfo, setReplyInfo] = useState(null);
-
   return (
     <div className="flex">
       {/* <SideBar /> */}
 
-      <div className="flex h-screen flex-grow flex-col items-stretch">
+      <div className="flex flex-grow flex-col items-stretch mt-[36px]">
         {loading ? (
           <>
             <div className="border-dark-lighten h-20 border-b"></div>
@@ -54,7 +52,13 @@ const ChatContainer: FC = () => {
           </div>
         ) : (
           <>
-            <ChatHeader conversation={conversation} />
+            {/* <ChatHeader conversation={conversation} /> */}
+            <BookingPin
+              bookingId={bookingId}
+              partnerId={
+                conversation.users.filter((id) => id !== currentUser?.uid)[0]
+              }
+            />
             <ChatView
               replyInfo={replyInfo}
               setReplyInfo={setReplyInfo}

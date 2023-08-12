@@ -4,9 +4,9 @@ import { formatDate, splitLinkFromMessage } from '~/utils/format.util';
 import { EMOJI_REGEX } from '~/constants';
 import { ConversationInfo, MessageItem } from '~/constants/interface';
 import ReplyBadge from '../Chat/ReplyBadge';
-import SpriteRenderer from '../SpriteRenderer';
+import SpriteRenderer from '../../../../shared/SpriteRenderer';
 import { handleOpenWebview } from '~/utils/zalo.util';
-import ImageView from '../ImageView';
+import ImageView from '../../../../shared/ImageView';
 
 interface LeftMessageProps {
   message: MessageItem;

@@ -74,17 +74,20 @@ const ChatView: FC<ChatViewProps> = ({
   }, []);
 
   useEffect(() => {
-    socketService.onMessageOnce(currentUser.uid, (receivedData: MessageItem) => {
-      console.log('receivedData', receivedData);
-      const updatedMessages = [...data?.messages, receivedData];
-      setData((prevData) => {
-        return {
-          ...prevData,
-          messages: updatedMessages,
-          total: prevData + 1,
-        };
-      });
-    });
+    socketService.onMessageOnce(
+      currentUser.uid,
+      (receivedData: MessageItem) => {
+        console.log('receivedData', receivedData);
+        const updatedMessages = [...data?.messages, receivedData];
+        setData((prevData) => {
+          return {
+            ...prevData,
+            messages: updatedMessages,
+            total: prevData + 1,
+          };
+        });
+      }
+    );
   }, [data]);
 
   const dataRef = useRef(data);

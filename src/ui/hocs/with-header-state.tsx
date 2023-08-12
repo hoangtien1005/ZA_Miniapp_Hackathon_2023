@@ -60,6 +60,11 @@ const withHeaderState = (WrappedComponent) =>
       } else if (mappingTitleFromRoute[path]) {
         header.title = mappingTitleFromRoute[path];
       }
+      // hardcode
+      if (path.indexOf('chat') > 0) {
+        header.title = mappingTitleFromRoute[ROUTES.CHAT];
+      }
+
       header.previousUrl = prevPath;
       header.isVisible = !arrayPathInsvisible.includes(path);
       header.isVisibleBack = !arrayPathInsvisibleBack.includes(path);

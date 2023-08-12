@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         'primary': '#F89945',
         'sub': '#742200',
+        'warning': '#FFCF0F',
+        'error': '#CA1919',
       }
     },
   },

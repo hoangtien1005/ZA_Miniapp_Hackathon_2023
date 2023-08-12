@@ -133,3 +133,29 @@ body {
     li:first-child {margin-top: 0;}
   }
 }
+
+.btn {
+  &-warning {
+    font-weight: 700;
+    background-color: #FFCF0F !important;
+  }
+
+  &-error {
+    font-weight: 700;
+    background-color: #CA1919 !important;
+  }
+
+  &-warning-outline {
+    font-weight: 700;
+    color: #FFCF0F !important;
+    background-color: transparent !important;
+    border: 3px solid #FFCF0F !important;
+  }
+
+  &-error-outline {
+    font-weight: 700;
+    color: #CA1919 !important;
+    background-color: transparent !important;
+    border: 3px solid #CA1919 !important;
+  }
+}

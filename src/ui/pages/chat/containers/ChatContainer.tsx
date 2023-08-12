@@ -11,6 +11,19 @@ import ChatView from '~/ui/pages/chat/components/Chat/ChatView';
 import InputSection from '~/ui/shared/Input/InputSection';
 import BookingPin from '../components/Chat/BookingPin';
 import { WarningExclamationImg } from '~/ui/assets/images';
+import Loading from '~/ui/shared/Loading';
+import { isNumber } from '~/utils/validate.util';
+
+const validateConversationId = (conversationId: string) => {
+  if (!conversationId) {
+    return false;
+  }
+
+  if (isNumber(+conversationId) && Number(conversationId) < 0) {
+    return false;
+  }
+  return true;
+};
 
 const ChatContainer: FC = () => {
   const { conversationId, bookingId } = useParams();
@@ -20,7 +33,11 @@ const ChatContainer: FC = () => {
     error: null,
   };
 
-  const { conversation } = useConversation({ conversationId });
+  const { conversation } = useConversation({
+    conversationId: validateConversationId(conversationId)
+      ? conversationId
+      : null,
+  });
 
   const [currentUser] = useRecoilState(userProfileState);
   const [inputSectionOffset, setInputSectionOffset] = useState(0);
@@ -28,12 +45,19 @@ const ChatContainer: FC = () => {
 
   const socketService = useSocketService();
 
+  const [socketConnected, setSocketConnected] = useState(false);
+
   useEffect(() => {
     socketService.connect('hi');
     socketService.onMessage('connect', function () {
       console.log('Client has connected to the server!');
+      setSocketConnected(true);
     });
   }, []);
+
+  if (!socketConnected) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex">
@@ -46,8 +70,7 @@ const ChatContainer: FC = () => {
             <div className="flex-grow"></div>
             <InputSection disabled />
           </>
-        ) : error ||
-          !conversation?.users?.includes(currentUser?.uid as string) ? (
+        ) : error ? (
           <>
             <div className="flex h-full w-full flex-col items-center justify-center gap-6">
               <div className="absolute bottom-[150px] flex flex-col justify-center items-center">
@@ -62,6 +85,31 @@ const ChatContainer: FC = () => {
                 </p>
               </div>
             </div>
+            <div
+              className="absolute bottom-0 left-0 right-0"
+              style={{
+                filter: 'grayscale(1)',
+              }}
+            >
+              <InputSection
+                setInputSectionOffset={setInputSectionOffset}
+                replyInfo={replyInfo}
+                setReplyInfo={setReplyInfo}
+                disabled
+              />
+            </div>
+          </>
+        ) : !conversation?.users?.includes(currentUser?.uid as string) ? (
+          <>
+            {console.log('here')}
+            <BookingPin
+              bookingId={bookingId}
+              partnerId={
+                conversation?.users?.filter(
+                  (id) => id !== currentUser?.uid
+                )?.[0]
+              }
+            />
             <div
               className="absolute bottom-0 left-0 right-0"
               style={{

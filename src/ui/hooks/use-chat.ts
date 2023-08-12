@@ -23,12 +23,15 @@ export function useConversation({
     null
   );
 
+  console.log('conversationId', conversationId);
+
   // TODO: listen to socket and update conversation
   useEffect(() => {
+    if (!conversationId) return;
     chatService.getConversation(conversationId).then((data) => {
       setConversation(data);
     });
-  }, []);
+  }, [conversationId]);
 
   useEffect(() => {
     if (!conversationId) return;

@@ -142,6 +142,11 @@ const ChatView: FC<ChatViewProps> = ({
     };
   }, []);
 
+  console.log('data', data);
+  console.log('loading', loading);
+  console.log('error', error);
+  console.log('data', data);
+
   if (loading)
     return (
       <div className="flex flex-grow items-center justify-center">
@@ -158,10 +163,18 @@ const ChatView: FC<ChatViewProps> = ({
 
   if (data?.total === 0) {
     return (
-      <div className="flex-grow">
-        <p className="mt-4 text-center text-gray-400">
-          No message recently. Start chatting now.
-        </p>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column-reverse',
+          height: `calc(100vh - ${144 + inputSectionOffset}px)`,
+        }}
+      >
+        <div className="flex-grow">
+          <p className="mt-4 text-center text-gray-400">
+            No message recently. Start chatting now.
+          </p>
+        </div>
       </div>
     );
   }

@@ -139,5 +139,20 @@ class ArticleService extends BaseApiService {
         return [];
       });
   }
+
+  getOAById(params): Promise<ArticleCategoryDTO[]> {
+    const path = 'oaById';
+    return super
+      .get(this.generateUrl(path), params)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        if (err) {
+          console.log('Error get oa by id: ', err);
+        }
+        return [];
+      });
+    }
 }
 export const useArticleService = () => new ArticleService();

@@ -27,12 +27,12 @@ export default function EntryItem(item: EntryItemProps) {
       <div className="icon m-auto sz-24">
         <img
           className="w-full"
-          alt={item.altText}
-          src={item.imageUrl}
+          // alt={item.altText}
+          src={item.category_icon}
           onClick={handleOnClick}
         />
       </div>
-      <div className="text mt-12 text-center">{item.name}</div>
+      <div className="text mt-12 text-center">{item.category_description}</div>
     </div>
   );
 }

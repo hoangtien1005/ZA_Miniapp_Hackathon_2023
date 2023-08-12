@@ -9,12 +9,14 @@ interface OAArticleListProps {
   containerClassName?: string;
   articles: any;
   handleArticleClick: any;
+  onClickViewDetailOA: any;
 }
 
 export const OAArticleListVertical: React.FC<OAArticleListProps> = ({
   containerClassName,
   articles = [],
   handleArticleClick,
+  onClickViewDetailOA,
 }) => {
   return (
     <div className={`news_list ${containerClassName}`}>
@@ -23,12 +25,12 @@ export const OAArticleListVertical: React.FC<OAArticleListProps> = ({
           <div
             key={article.oa_id}
             className="news_item news_item_list mt-16"
-            onClick={handleArticleClick(article)}
+            onClick={() => onClickViewDetailOA(article.oa_id)}
           >
             <div className="images">
               <div className="imgDrop">
                 {' '}
-                <img src={article.avatar} alt="" />
+                <img src={article.cover} alt="" />
               </div>
             </div>
             <div className="news_des">

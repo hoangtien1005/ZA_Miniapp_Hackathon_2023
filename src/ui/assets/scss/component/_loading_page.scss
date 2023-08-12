@@ -9,6 +9,15 @@
   align-items: center;
   justify-content: center;
   .inner {
-    width: 160px;
+    width: 400px;
+  }
+  .inner_introduction {
+    width: 260px;
+    // height: calc(100vh - 75px - 68px);
+    // img{
+    //   height: 100%;
+    // }
+    position: relative;
+    top: -20px;
   }
 }

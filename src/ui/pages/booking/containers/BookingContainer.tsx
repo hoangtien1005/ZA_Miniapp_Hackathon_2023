@@ -3,7 +3,7 @@ import { DetailImg, DetailVoucherImg } from '~/ui/assets/images';
 
 import '~/ui/assets/scss/profile.scss';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
-import { useModal } from '~/ui/hooks';
+import { useAppNavigate, useModal } from '~/ui/hooks';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import ModalCustom from '~/ui/shared/Modal';
 import classNames from 'classnames';
@@ -12,6 +12,10 @@ import validateSchema, { autoTypeOptions, timeOptions } from './validate';
 import { Page, Box, Text, Select } from "zmp-ui";
 import { getBooking } from '~/application/submittedProfile/withdrawProfileUsecase';
 import { addMinutesToDate } from '~/utils/datetime.util';
+import { useGetOAByIdQuery } from '~/application/oa/useGetOAById.usecase';
+import { useParams } from 'react-router-dom';
+import ROUTES from '~/constants/routes';
+import { useSnackbar } from "zmp-ui";
 
 interface IFormInput {
   // date: Date;
@@ -28,6 +32,9 @@ const getCurrentMidnightDate = () => {
 
 const BookingContainer = () => {
   const { show: isShowModal, toggle: toggleModalRemove } = useModal(false);
+
+  const { openSnackbar, setDownloadProgress, closeSnackbar } = useSnackbar();
+
   const [storeId, setStoreId] = useState(
   );
 
@@ -53,11 +60,19 @@ const BookingContainer = () => {
     mode: 'onTouched',
   });
 
+  const navigate = useAppNavigate();
+
   const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
     getBooking({
       start_time: addMinutesToDate(getCurrentMidnightDate(), data.startTime * 30).getTime(),
       end_time: addMinutesToDate(getCurrentMidnightDate(), data.endTime * 30).getTime(),
       store_id: data.storeId,
+    }).then((_) => {
+      openSnackbar({
+        text: "Tạo cuộc hẹn thành công",
+        type: "success",
+      });
+      setTimeout(() => navigate(ROUTES.BOOKING_LIST), 2000);
     })
   };
 
@@ -86,6 +101,11 @@ const BookingContainer = () => {
     trigger('endTime');
   };
 
+  // const { id } = useParams();
+
+
+  // const {data} = useGetOAByIdQuery({id});
+
   return (
     <>
       <section className="sec_booking">
@@ -94,7 +114,7 @@ const BookingContainer = () => {
           <div className='info-zone'>
             <div className="oa-info">
               <h1>Black cat Catering</h1>
-              <p>Chúng tôi Blackcat catering chuyên cung cấp dịch vụ ăn uống, căn tin,food court cho các công ty, trường học, nhà hàng. </p>
+              <p>Chúng tôi Blackcat catering chuyên cung cấp dịch vụ ăn uống, căn tin, food court cho các công ty, trường học, nhà hàng. </p>
             </div>
             <div className="vouchers">
               <h2>Khuyến mãi hôm nay</h2>

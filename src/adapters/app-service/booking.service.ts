@@ -1,4 +1,6 @@
+import { TRACKING_URL } from '~/configs/app';
 import { BaseApiService } from '../baseApi.service';
+import { bookingFromDTO } from '~/dto/booking';
 
 export interface ParamsGetBookingList {
   user_id: string;
@@ -6,15 +8,16 @@ export interface ParamsGetBookingList {
 
 class BookingService extends BaseApiService {
   getBookingList(params?: ParamsGetBookingList): Promise<any[]> {
-    const path = 'bookingByUserId';
+    const path = 'booking/getAllUserBooking';
     return super
-      .get(this.generateUrl(path), params)
+      .get(this.generateUrl(path, 'https://zah-4.123c.vn/api'), params)
       .then((res) => {
-        return res.result;
+        const data = res.data.map(bookingFromDTO);
+        return data;
       })
       .catch((err) => {
         if (err) {
-          console.log('Error get booking by user id: ', err);
+          console.log('Error get booking list: ', err);
         }
         return [];
       });

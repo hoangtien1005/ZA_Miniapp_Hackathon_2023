@@ -11,8 +11,8 @@ export interface Booking {
   oaId: string;
   storeId: string;
   storeName: string;
-  startTime: string;
-  endTime: string;
+  startTime: number;
+  endTime: number;
   status: BookingStatus;
   conversationId: string | null;
 }

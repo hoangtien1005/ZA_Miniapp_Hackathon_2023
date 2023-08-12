@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { useGetConfigFeaturesByTypeOptimizedQuery } from '~/application/configFeature/useGetConfigFeaturesByTypeOptimizedQuery.usecase';
 import { useGetAllCategories } from '~/application/consent/useGetConfigConsent';
 import { MAX_ITEMS_SHORTCUT_HOME } from '~/constants';
 import { TYPE_FEATURE_CONFIG } from '~/constants/enums';
@@ -8,7 +7,8 @@ import { BannerHomePlaceholderImg } from '~/ui/assets/images';
 import BannerItem from '~/ui/shared/BannerItem';
 import EntryItem from '~/ui/shared/EntryItem';
 import ScrollNav from '~/ui/shared/ScrollNav';
-import { sortTwoItemByIndex } from '~/utils/common.util';
+import '~/ui/assets/scss/home.scss';
+
 
 interface EntriesHomeZoneProps {
   headerBanner: any;

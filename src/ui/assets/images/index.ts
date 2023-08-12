@@ -19,6 +19,7 @@ import DetailVoucherImg from '~/ui/assets/images/detail-voucher.png';
 import LogoSearchImage from '~/ui/assets/images/logo_search.png';
 import LoadingImage from '~/ui/assets/images/loading.png';
 import IntroductionImage from '~/ui/assets/images/introduction.png';
+import ProfileImage from '~/ui/assets/images/icon_1/profile.png';
 
 
 export {
@@ -42,4 +43,5 @@ export {
   LogoSearchImage,
   LoadingImage,
   IntroductionImage,
+  ProfileImage,
 };

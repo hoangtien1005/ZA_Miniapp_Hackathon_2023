@@ -21,6 +21,17 @@ import LoadingImage from '~/ui/assets/images/loading.png';
 import IntroductionImage from '~/ui/assets/images/introduction.png';
 import ProfileImage from '~/ui/assets/images/icon_1/profile.png';
 
+import Animal0Img from '~/ui/assets/images/animal/0.png';
+import Animal1Img from '~/ui/assets/images/animal/1.png';
+import Animal2Img from '~/ui/assets/images/animal/2.png';
+import Animal3Img from '~/ui/assets/images/animal/3.png';
+import Animal4Img from '~/ui/assets/images/animal/4.png';
+import Animal5Img from '~/ui/assets/images/animal/5.png';
+import Animal6Img from '~/ui/assets/images/animal/6.png';
+import Animal7Img from '~/ui/assets/images/animal/7.png';
+import Animal8Img from '~/ui/assets/images/animal/8.png';
+import Animal9Img from '~/ui/assets/images/animal/9.jpg';
+import ThreeDotImg from '~/ui/assets/images/three_dot.png';
 
 export {
   NavDiscoverOnImg,
@@ -44,4 +55,15 @@ export {
   LoadingImage,
   IntroductionImage,
   ProfileImage,
+  Animal0Img,
+  Animal1Img,
+  Animal2Img,
+  Animal3Img,
+  Animal4Img,
+  Animal5Img,
+  Animal6Img,
+  Animal7Img,
+  Animal8Img,
+  Animal9Img,
+  ThreeDotImg,
 };

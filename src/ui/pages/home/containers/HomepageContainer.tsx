@@ -18,7 +18,6 @@ import { TYPE_BANNER, TYPE_LOGO } from '~/constants/enums';
 import '~/ui/assets/scss/home.scss';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { ArticleZoneSlider } from '~/ui/shared/ArticleZoneSlider';
-import Chat from '~/ui/shared/ChatPage';
 import { sortTwoItemByIndex } from '~/utils/common.util';
 import { LIST_OA_TYPE } from '~/constants/app';
 import {

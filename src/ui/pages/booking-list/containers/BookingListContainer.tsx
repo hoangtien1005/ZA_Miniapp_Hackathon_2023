@@ -56,7 +56,7 @@ const BookingListContainer = () => {
   }, []);
 
   const handleViewChat = (item: Booking) => {
-    navigate(`${ROUTES.CHAT}/${item.conversationId}`);
+    navigate(`${ROUTES.CHAT}/${item.conversationId}/${item.bookingId}`);
   };
 
   return (

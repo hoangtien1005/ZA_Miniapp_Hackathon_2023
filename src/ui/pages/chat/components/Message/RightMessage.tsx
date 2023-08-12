@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import { EMOJI_REGEX } from '~/constants';
 import { MessageItem } from '~/constants/interface';
 import ReplyBadge from '../Chat/ReplyBadge';
-import ImageView from '../ImageView';
-import SpriteRenderer from '../SpriteRenderer';
+import ImageView from '../../../../shared/ImageView';
+import SpriteRenderer from '../../../../shared/SpriteRenderer';
 import { handleOpenWebview } from '~/utils/zalo.util';
 
 interface RightMessageProps {

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Skeleton from '../Skeleton';
+import Skeleton from '../../../../shared/Skeleton';
 import { DEFAULT_AVATAR, IMAGE_PROXY } from '~/constants';
 
 interface AvatarFromIdProps {

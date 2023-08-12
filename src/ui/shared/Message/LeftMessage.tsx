@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment, useState } from 'react';
 import { formatDate, splitLinkFromMessage } from '~/utils/format.util';
 
 import { EMOJI_REGEX } from '~/constants';
@@ -6,6 +6,7 @@ import { ConversationInfo, MessageItem } from '~/constants/interface';
 import ReplyBadge from '../Chat/ReplyBadge';
 import SpriteRenderer from '../SpriteRenderer';
 import { handleOpenWebview } from '~/utils/zalo.util';
+import ImageView from '../ImageView';
 
 interface LeftMessageProps {
   message: MessageItem;
@@ -20,6 +21,8 @@ const LeftMessage: FC<LeftMessageProps> = ({
   conversation,
   setReplyInfo,
 }) => {
+  const [isImageViewOpened, setIsImageViewOpened] = useState(false);
+
   const formattedDate = formatDate(
     message.createdAt ? +message.createdAt : Date.now()
   );
@@ -83,6 +86,24 @@ const LeftMessage: FC<LeftMessageProps> = ({
                 ))}
               </div>
             )}
+          </>
+        ) : message.type === 'image' ? (
+          <>
+            <img
+              onClick={(e) => {
+                setIsImageViewOpened(true);
+                e.stopPropagation();
+              }}
+              title={formattedDate}
+              className="max-w-[60%] cursor-pointer transition duration-300 hover:brightness-[85%]"
+              src={message.content}
+              alt=""
+            />
+            <ImageView
+              src={message.content}
+              isOpened={isImageViewOpened}
+              setIsOpened={setIsImageViewOpened}
+            />
           </>
         ) : message.type === 'sticker' ? (
           <SpriteRenderer

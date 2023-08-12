@@ -8,7 +8,10 @@ import { Spinner } from 'zmp-ui';
 import { ConversationInfo, MessageItem } from '~/constants/interface';
 import { useRecoilState } from 'recoil';
 import { userProfileState } from '~/adapters/store/atoms/user';
-import useMessage from '~/ui/hooks/use-message';
+import { useMessage } from '~/ui/hooks/use-chat';
+import { useSocketService } from '~/adapters/app-service/socket.service';
+import { MessageData } from '~/mock/message.mock';
+import { useChatService } from '~/adapters/app-service/chat.service';
 
 interface ChatViewProps {
   conversation: ConversationInfo;
@@ -30,6 +33,7 @@ const ChatView: FC<ChatViewProps> = ({
   const scrollBottomRef = useRef<HTMLDivElement>(null);
 
   const [limitCount, setLimitCount] = useState(10);
+  const chatService = useChatService();
 
   // const { data, loading, error } = useCollectionQuery(
   //   `conversation-data-${conversationId}-${limitCount}`,
@@ -45,10 +49,43 @@ const ChatView: FC<ChatViewProps> = ({
     error: null,
   };
 
-  const { data } = useMessage('2');
+  // const { data } = useMessage({ conversationId });
 
-  console.log(data);
+  const [data, setData] = useState<MessageData>({
+    messages: [],
+    total: 0,
+    conversationId: conversationId || '',
+  });
 
+  const socketService = useSocketService();
+
+  useEffect(() => {
+    chatService
+      .getAllMessages({
+        conversationId,
+      })
+      .then((data) => {
+        setData({
+          messages: data,
+          total: data.length,
+          conversationId,
+        });
+      });
+  }, []);
+
+  useEffect(() => {
+    socketService.onMessageOnce(currentUser.uid, (receivedData: MessageItem) => {
+      console.log('receivedData', receivedData);
+      const updatedMessages = [...data?.messages, receivedData];
+      setData((prevData) => {
+        return {
+          ...prevData,
+          messages: updatedMessages,
+          total: prevData + 1,
+        };
+      });
+    });
+  }, [data]);
 
   const dataRef = useRef(data);
   const conversationIdRef = useRef(conversationId);

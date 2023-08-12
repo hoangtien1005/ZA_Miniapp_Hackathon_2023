@@ -8,7 +8,7 @@ interface ReplyBadgeProps {
 }
 
 const ReplyBadge: FC<ReplyBadgeProps> = ({ messageId }) => {
-  const { id: conversationId } = useParams();
+  const { conversationId } = useParams();
 
   const [isAlertOpened, setIsAlertOpened] = useState(false);
 

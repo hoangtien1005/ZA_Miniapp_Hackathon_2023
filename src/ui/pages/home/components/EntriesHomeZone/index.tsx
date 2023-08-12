@@ -25,6 +25,7 @@ export const EntriesHomeZone: React.FC<EntriesHomeZoneProps> = ({
     });
   return (
     <section className="sec_product">
+      <h1 className='heading_home'>Bạn sẽ ăn ở đâu ?</h1>
       <BannerItem
         classNameBanner="banner"
         {...headerBanner}

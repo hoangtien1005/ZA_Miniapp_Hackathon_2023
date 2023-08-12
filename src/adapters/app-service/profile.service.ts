@@ -4,7 +4,7 @@ import { CONSENT_PROFILE_LEAD_TYPE } from '~/constants/enums';
 
 class SubmittedProfileService extends BaseApiService {
   getSubmittedInfoProfiles(params) {
-    const path = 'consent/profiles';
+    const path = 'meal_history';
     return super
       .get(this.generateUrl(path), params)
       .then((res) => {
@@ -12,7 +12,7 @@ class SubmittedProfileService extends BaseApiService {
       })
       .catch((err) => {
         if (err) {
-          console.log('Error get processed leads: ', err);
+          console.log('Error get meal history: ', err);
         }
         return [];
       });

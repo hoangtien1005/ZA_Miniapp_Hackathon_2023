@@ -29,7 +29,7 @@ export const BOTTOM_NAV_ITEMS = {
     },
     {
       imageSrc: NavDiscoverOnImg,
-      text: 'Chat',
+      text: 'Cuộc hẹn',
       url: ROUTES.CHAT,
       name: 'CHAT',
     },

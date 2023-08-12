@@ -59,7 +59,7 @@ class ConfigService extends BaseApiService {
   }
 
   getConfigConsent(): Promise<any> {
-    const path = `config/consent-version`;
+    const path = `categories`;
     return super
       .get(this.generateUrl(path))
       .then((res) => {

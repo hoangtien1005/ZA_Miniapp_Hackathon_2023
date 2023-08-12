@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { useGetOAArticleCategoriesQuery } from '~/application/article/useGetOAArticleCategoriesQuery.usecase';
-import { useGetOAArticlesQuery } from '~/application/article/useGetOAArticlesQuery.usecase';
+import { useGetOAArticleCategoriesQuery } from '~/application/oa/useGetOAArticleCategoriesQuery.usecase';
+import { useGetAllOAFoodQuery } from '~/application/oa/useGetAllOA.usecase';
 import { useGetBannersByTypeQuery } from '~/application/banner/useGetBannersByTypeQuery.usecase';
 import { useGetPromoteProductsByTypeQuery } from '~/application/promoteProduct/useGetPromoteProductsByTypeQuery.usecase';
 import {
@@ -53,7 +53,7 @@ const NewsContainer = () => {
     }
   }, [categoryTabList]);
 
-  const { data: articles } = useGetOAArticlesQuery({
+  const { data: articles } = useGetAllOAFoodQuery({
     limit: 5,
     offset: 0,
     category: currentTab?.value,
@@ -61,7 +61,7 @@ const NewsContainer = () => {
     requiredCategory: true,
   });
 
-  const { data: pinnedArticles } = useGetOAArticlesQuery({
+  const { data: pinnedArticles } = useGetAllOAFoodQuery({
     limit: 2,
     offset: 0,
     category: currentTab?.value,

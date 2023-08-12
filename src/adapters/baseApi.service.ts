@@ -31,12 +31,7 @@ export class BaseApiService {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  generateUrl(path) {
-    let rootApiUrl;
-    if (typeof window !== 'undefined') {
-      // call from client
-      rootApiUrl = DOMAIN_API_URL;
-    } else rootApiUrl = process.env.API_INTERNAL_URL;
+  generateUrl(path, rootApiUrl = DOMAIN_API_URL) {
     return path ? `${rootApiUrl}/${path}` : rootApiUrl;
   }
 }

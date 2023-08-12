@@ -39,7 +39,7 @@ class SubmittedProfileService extends BaseApiService {
   getBooking(body: any) {
     const path = 'booking/book';
     return super
-      .post(this.generateUrl(path, 'https://zah-4.123c.vn/api'), {}, body)
+      .post(this.generateUrl(path, 'http://118.102.2.130/zahackathondb/api'), {}, body)
       .then((res) => {
         return res;
       })

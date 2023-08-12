@@ -20,7 +20,7 @@ class ChatService extends BaseApiService {
   getAllMessages(params?: ParamsGetMessages): Promise<any[]> {
     const path = 'booking/messages';
     return super
-      .get(this.generateUrl(path, 'https://zah-4.123c.vn/api'), params)
+      .get(this.generateUrl(path, 'http://118.102.2.130/zahackathondb/api'), params)
       .then((res) => {
         return res.data;
       })

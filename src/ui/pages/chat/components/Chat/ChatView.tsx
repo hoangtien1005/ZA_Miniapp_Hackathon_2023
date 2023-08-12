@@ -156,7 +156,7 @@ const ChatView: FC<ChatViewProps> = ({
       </div>
     );
 
-  if (data?.total === 0)
+  if (data?.total === 0) {
     return (
       <div className="flex-grow">
         <p className="mt-4 text-center text-gray-400">
@@ -164,6 +164,7 @@ const ChatView: FC<ChatViewProps> = ({
         </p>
       </div>
     );
+  }
 
   return (
     <InfiniteScroll

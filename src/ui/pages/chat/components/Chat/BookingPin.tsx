@@ -1,15 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 
-import { Link } from 'react-router-dom';
-import Skeleton from '../../../../shared/Skeleton';
-import { useRecoilState } from 'recoil';
-import { userProfileState } from '~/adapters/store/atoms/user';
-import { useBookingService } from '~/adapters/app-service/booking.service';
-import { Booking } from '~/domain/booking';
 import { v4 as uuidv4 } from 'uuid';
-import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
-import { ThreeDotImg } from '~/ui/assets/images';
 import { Sheet, useSnackbar } from 'zmp-ui';
+import { useBookingService } from '~/adapters/app-service/booking.service';
+import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
+import { Booking } from '~/domain/booking';
+import { ThreeDotImg } from '~/ui/assets/images';
 import useDialog from '~/ui/hooks/use-dialog';
 
 interface BookingPinProps {
@@ -22,8 +18,6 @@ const getIndex = (id: string) => {
 };
 
 const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
-  const [currentUser] = useRecoilState(userProfileState);
-
   const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
   const [visible, actions] = useDialog();
 
@@ -39,8 +33,6 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
     },
     []
   );
-
-  console.log('currentBooking', currentBooking);
 
   useEffect(() => {
     bookingService
@@ -65,6 +57,37 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
       duration: 10000000,
     });
   };
+
+  if (!partnerId) {
+    return (
+      <div className="absolute top-[60px] left-4 right-4 z-[400]">
+        <li
+          key={uuidv4()}
+          className="flex module_box mt-16 gap-16 px-3 py-4 flex-midle justify-between"
+        >
+          <div className="flex gap-16 flex-midle">
+            <div className="images_drop w-72">
+              <img src={ANONYMOUS_AVATARS[getIndex(partnerId)]} />
+            </div>
+            <div className="des fz-12">
+              <h1 className="text-sub text-lg">Đang tìm kiếm...</h1>
+              <div className="mt-4">
+                <span className="ml-4">Tại Chi nhánh quận 7</span>
+              </div>
+              <div className="mt-4">
+                <span className="text-primary ml-4">30 phút nữa</span>
+                {/* <span className="status_fail ml-4">Thất bại</span> */}
+                {/* <span className="status_done ml-4">Hoàn tất</span> */}
+              </div>
+            </div>
+          </div>
+          <div className="icon" onClick={actions.handleOpen}>
+            <img src={ThreeDotImg} />
+          </div>
+        </li>
+      </div>
+    );
+  }
 
   return (
     <>

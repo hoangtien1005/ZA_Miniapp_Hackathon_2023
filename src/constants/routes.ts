@@ -10,15 +10,15 @@ const ROUTES = {
 };
 
 export const mappingTitleFromRoute: any = {
-  [ROUTES.HOME]: 'Food Date',
-  [ROUTES.CHAT]: 'Chat',
+  [ROUTES.HOME]: 'Trang chủ',
+  [ROUTES.CHAT]: 'Cuộc trò chuyện',
   [ROUTES.BOOKING_LIST]: 'Cuộc hẹn của bạn',
 
-  [ROUTES.PROFILE]: 'Profile',
+  [ROUTES.PROFILE]: 'Cá nhân',
   // [ROUTES.PROFILE]: 'Cá nhân',
-  [ROUTES.PROFILE_DATA_LIST]: 'Profile',
-  [ROUTES.BOOKING]: 'Food Court',
-  [ROUTES.INTRODUCTION]: 'Introduction',
+  [ROUTES.PROFILE_DATA_LIST]: 'Cá nhân',
+  [ROUTES.BOOKING]: 'Chi tiết OA',
+  [ROUTES.INTRODUCTION]: 'Giới thiệu',
 
 };
 

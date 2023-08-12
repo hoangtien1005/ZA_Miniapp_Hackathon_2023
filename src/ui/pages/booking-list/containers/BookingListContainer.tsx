@@ -14,9 +14,10 @@ import { userProfileState } from '~/adapters/store/atoms/user';
 import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
 import ROUTES from '~/constants/routes';
 import { Booking, BookingStatus } from '~/domain/booking';
-import { ThreeDotImg } from '~/ui/assets/images';
+import { MatchingImg, ThreeDotImg } from '~/ui/assets/images';
 import withLayoutWrapper from '~/ui/hocs/with-layout-wrapper';
 import { useAppNavigate } from '~/ui/hooks';
+import { renderDateTime } from '~/utils/datetime.util';
 
 const getIndex = (id?: string) => {
   if (!id) {
@@ -40,36 +41,54 @@ const BookingListContainer = () => {
     historyList: [],
   });
 
-  useEffect(() => {
-    bookingService
-      .getBookingList()
-      .then((data) => {
-        const bookingList = data;
-        const activeList = bookingList.filter(
-          (item) =>
-            item.status === BookingStatus.ACTIVE ||
-            item.status === BookingStatus.MATCH
-        );
-        const historyList = bookingList.filter(
-          (item) =>
-            item.status === BookingStatus.CANCEL ||
-            item.status === BookingStatus.EXPIRED
-        );
-        setData({
-          activeList,
-          historyList,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
+  const handle = async () => {
+    try {
+      const data = await bookingService.getBookingList();
+
+      const bookingList = await Promise.all(
+        data.map(async (item) => {
+          const partnerInfo = await bookingService.getPartnerInfoFromBooking({
+            bookingId: item.bookingId,
+          });
+          return {
+            ...item,
+            partner: partnerInfo,
+          };
+        })
+      );
+      const activeList = bookingList.filter(
+        (item) =>
+          item.status === BookingStatus.ACTIVE ||
+          item.status === BookingStatus.MATCH
+      );
+      const historyList = bookingList.filter(
+        (item) =>
+          item.status === BookingStatus.CANCEL ||
+          item.status === BookingStatus.EXPIRED
+      );
+      setData({
+        activeList,
+        historyList,
       });
+    } catch (err) {
+      console.log('err', err);
+    }
+  };
+
+  useEffect(() => {
+    handle();
   }, []);
+
+  console.log('data', data);
 
   const handleViewChat = (item: Booking) => {
     console.log('item', item);
-    navigate(`${ROUTES.CHAT}/${item.conversationId || '-1'}/${item.bookingId}`, {
-      animate: false,
-    });
+    navigate(
+      `${ROUTES.CHAT}/${item.conversationId || '-1'}/${item.bookingId}`,
+      {
+        animate: false,
+      }
+    );
   };
 
   return (
@@ -101,11 +120,24 @@ const BookingListContainer = () => {
                         >
                           <div className="flex gap-16 flex-midle">
                             <div className="images_drop w-72">
-                              <img src={ANONYMOUS_AVATARS[getIndex()]} />
+                              {!item?.partner && <img src={MatchingImg} />}
+                              {item?.partner && (
+                                <img
+                                  src={
+                                    ANONYMOUS_AVATARS[
+                                      getIndex(item?.partner?.user_id)
+                                    ]
+                                  }
+                                />
+                              )}
                             </div>
                             <div className="des fz-12">
                               <h1 className="text-sub text-lg">
-                                {ANONYMOUS_NAMES[getIndex()]}
+                                {!item?.partner && 'Đang tìm kiếm...'}
+                                {item?.partner &&
+                                  ANONYMOUS_NAMES[
+                                    getIndex(item?.partner?.user_id)
+                                  ]}
                               </h1>
                               <div className="mt-4">
                                 <span className="ml-4">
@@ -114,7 +146,7 @@ const BookingListContainer = () => {
                               </div>
                               <div className="mt-4">
                                 <span className="text-primary ml-4">
-                                  30 phút nữa
+                                  {renderDateTime(item.startTime, item.endTime)}
                                 </span>
                                 {/* <span className="status_fail ml-4">Thất bại</span> */}
                                 {/* <span className="status_done ml-4">Hoàn tất</span> */}
@@ -154,11 +186,24 @@ const BookingListContainer = () => {
                         >
                           <div className="flex gap-16 flex-midle">
                             <div className="images_drop w-72">
-                              <img src={ANONYMOUS_AVATARS[getIndex()]} />
+                              {!item?.partner && <img src={MatchingImg} />}
+                              {item?.partner && (
+                                <img
+                                  src={
+                                    ANONYMOUS_AVATARS[
+                                      getIndex(item?.partner?.user_id)
+                                    ]
+                                  }
+                                />
+                              )}
                             </div>
                             <div className="des fz-12">
                               <h1 className="text-sub text-lg">
-                                {ANONYMOUS_NAMES[getIndex()]}
+                                {!item?.partner && 'Đang tìm kiếm...'}
+                                {item?.partner &&
+                                  ANONYMOUS_NAMES[
+                                    getIndex(item?.partner?.user_id)
+                                  ]}
                               </h1>
                               <div className="mt-4">
                                 <span className="ml-4">
@@ -167,7 +212,7 @@ const BookingListContainer = () => {
                               </div>
                               <div className="mt-4">
                                 <span className="text-primary ml-4">
-                                  30 phút nữa
+                                  {renderDateTime(item.startTime, item.endTime)}
                                 </span>
                                 {/* <span className="status_fail ml-4">Thất bại</span> */}
                                 {/* <span className="status_done ml-4">Hoàn tất</span> */}

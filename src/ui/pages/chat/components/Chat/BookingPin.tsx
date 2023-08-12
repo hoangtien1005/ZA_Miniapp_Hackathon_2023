@@ -7,6 +7,7 @@ import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
 import { Booking } from '~/domain/booking';
 import { MatchingImg, ThreeDotImg } from '~/ui/assets/images';
 import useDialog from '~/ui/hooks/use-dialog';
+import { renderDateTime } from '~/utils/datetime.util';
 
 interface BookingPinProps {
   bookingId: string;
@@ -61,8 +62,6 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
     });
   };
 
-  console.log('partnerId', partnerId);
-
   if (!partnerId) {
     return (
       <div className="absolute top-[60px] left-4 right-4 z-[400]">
@@ -80,7 +79,12 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
                 <span className="ml-4">Tại Chi nhánh quận 7</span>
               </div>
               <div className="mt-4">
-                <span className="text-primary ml-4">30 phút nữa</span>
+                <span className="text-primary ml-4">
+                  {renderDateTime(
+                    currentBooking?.startTime,
+                    currentBooking?.endTime
+                  )}
+                </span>
                 {/* <span className="status_fail ml-4">Thất bại</span> */}
                 {/* <span className="status_done ml-4">Hoàn tất</span> */}
               </div>
@@ -118,7 +122,12 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
                   {/* <span className={classNames('ml-4', item.stateClassName)}>
                 {item?.stateText}
               </span> */}
-                  <span className="text-primary ml-4">30 phút nữa</span>
+                  <span className="text-primary ml-4">
+                    {renderDateTime(
+                      currentBooking?.startTime,
+                      currentBooking?.endTime
+                    )}
+                  </span>
                   {/* <span className="status_fail ml-4">Thất bại</span> */}
                   {/* <span className="status_done ml-4">Hoàn tất</span> */}
                 </div>

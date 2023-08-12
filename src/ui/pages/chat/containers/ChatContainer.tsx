@@ -101,7 +101,6 @@ const ChatContainer: FC = () => {
           </>
         ) : !conversation?.users?.includes(currentUser?.uid as string) ? (
           <>
-            {console.log('here')}
             <BookingPin
               bookingId={bookingId}
               partnerId={

@@ -95,16 +95,46 @@ class ArticleService extends BaseApiService {
       });
   }
 
-  getOAArticleCategories(): Promise<ArticleCategoryDTO[]> {
-    const path = 'oa-article-category/list';
+  getAllOAFood(): Promise<ArticleCategoryDTO[]> {
+    const path = 'oa';
     return super
       .get(this.generateUrl(path))
       .then((res) => {
-        return res.data;
+        return res;
       })
       .catch((err) => {
         if (err) {
-          console.log('Error get article categories: ', err);
+          console.log('Error get all oa: ', err);
+        }
+        return [];
+      });
+  }
+
+  getFavoriteOAFood(): Promise<ArticleCategoryDTO[]> {
+    const path = 'oa/favorite';
+    return super
+      .get(this.generateUrl(path))
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        if (err) {
+          console.log('Error get favorite oa: ', err);
+        }
+        return [];
+      });
+  }
+
+  getNearestOAFood(params): Promise<ArticleCategoryDTO[]> {
+    const path = 'oa/nearest';
+    return super
+      .get(this.generateUrl(path), params)
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        if (err) {
+          console.log('Error get nearest oa: ', err);
         }
         return [];
       });

@@ -20,7 +20,7 @@ export function useGetConfigFeaturesByTypeOptimizedQuery(
   const { iconType, max, sortFn } = params;
 
   return useQuery({
-    queryKey: ['config-features', iconType],
+    queryKey: ['categories', iconType],
     queryFn: () =>
       fetchWithGlobalLoading(() =>
         configFeatureService.getConfigFeatureByType(iconType)

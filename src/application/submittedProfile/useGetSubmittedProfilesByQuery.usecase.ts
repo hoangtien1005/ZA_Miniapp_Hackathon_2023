@@ -9,7 +9,7 @@ export function useGetSubmittedProfilesByQuery(params = {}) {
   const submittedProfileService: SubmittedProfileServiceApp =
     useSubmittedProfileService();
   return useQuery({
-    queryKey: ['submittedProfiles', params],
+    queryKey: ['meal_history', params],
     queryFn: () => submittedProfileService.getSubmittedInfoProfiles(params),
     select: (data) => {
       const mappingData = data.map((rs) => submittedProfileFromDTO(rs));

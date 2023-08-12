@@ -31,7 +31,7 @@ class AuthService extends BaseApiService {
     const path = 'login';
     return super
       .post(
-        this.generateUrl(path),
+        this.generateUrl(path, "https://zah-4.123c.vn/api"),
         {},
         {
           accessToken: token,
@@ -53,7 +53,7 @@ class AuthService extends BaseApiService {
   login(): Promise<any> {
     return new Promise<any>(async (resolve, reject) => {
       let zaloToken = (await this._getAccessToken()) as string;
-      if (!appConfig.isProd) zaloToken = 'Fu8x7v1Gt5m_W3WQbL3OMJoDEn-NHyS1Lz5ZHPX4zdrmuNLYXpRYMdcJTbwX1Of7NBbe1h4noaPaWtHzmYITF3wdVH3eEUChGwjqCfCCyWHKhMe3_tpYFYNFMWVSQTa6BFTB0jnggZybza8FYtlvBKJdOI-fLfq-GOeKVgmSbKf-WH5Cj0sKPrs647we1g1SPweGU9K-iqH4g5L1g2l3SNkaTrEe8SfBNgXiNFSqtq4vjMrTqGMD5m-qR2VpEVaX3P9oEDaxqp4LasyW_2U7EWUIEpt81Ba9C7QVvD5pb4ZPLG';
+      if (!appConfig.isProd) zaloToken = '4dnQTMGyNKqIVbbmOJnPI15pMdLZApyDHnTePq0s6ryoTcTY6pLWEYm91G0zJ7en0Gyu2W0kHJ9_BYvAQ1TQ3s42A4jX15CwO1WtVXuMHm482nL40aiKU0TyNHyKOZb0EonB3oy3JJuF8YXuApyi9bmUU4mYMG0EBtnGNZjPCWmKMqT3Vtyo6WayItn_EoyVSNzjBtvCRnTC3X1lHY5BIcaS8szTCrGiMNGzHKLsV2axNmT8C15oDn8gT5qSBJ5u5I5f6sOE45jNBaeOSW4N97CKQMPj6muS7Gy9Maz6TZ48O2HOH0';
       if (zaloToken) {
         const profileUser = await this.loginFiza(zaloToken);
         if (profileUser) {

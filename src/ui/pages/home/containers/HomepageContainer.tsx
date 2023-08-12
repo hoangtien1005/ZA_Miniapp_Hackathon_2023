@@ -25,8 +25,9 @@ import {
   OAArticleListHorizontal,
   OAArticleListVertical,
 } from '~/ui/shared/OAArticleList';
-import { useGetOAArticlesQuery } from '~/application/article/useGetOAArticlesQuery.usecase';
+import { useGetAllOAFoodQuery } from '~/application/oa/useGetAllOA.usecase';
 import { handleOpenWebview } from '~/utils/zalo.util';
+import { FoodBannerImg } from '~/ui/assets/images';
 
 export const HomepageContainer = () => {
   const { data: insuranceBanners } = useGetBannersByTypeQuery({
@@ -87,17 +88,11 @@ export const HomepageContainer = () => {
   }, []);
 
   const headerBanner = {
-    imageUrl: '',
+    imageUrl: FoodBannerImg,
     altText: 'food banner',
   };
 
-  const { data: pinnedArticles } = useGetOAArticlesQuery({
-    limit: 10,
-    offset: 0,
-    category: 1,
-    isPinned: true,
-    requiredCategory: true,
-  });
+  const { data: pinnedArticles } = useGetAllOAFoodQuery();
 
   const handleHorizontalArticleClick = (article) => () => {
     handleOpenWebview(article.link);
@@ -121,7 +116,7 @@ export const HomepageContainer = () => {
       <section className="sec_news">
         <div className="container">
           <OAArticleListVertical
-            articles={pinnedArticles?.data}
+            articles={pinnedArticles}
             containerClassName="mt-16"
             handleArticleClick={handleHorizontalArticleClick}
           />

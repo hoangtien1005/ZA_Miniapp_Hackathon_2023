@@ -11,6 +11,8 @@ const renderItem = (bottomItem, szIcon) => {
     <>
       <i className={`icon block m-auto ${szIcon}`}>
         <img className="w-auto" src={bottomItem.imageSrc} />
+        
+        {/* <bottomItem.imageSrc /> */}
       </i>
       <span className="block mt-4">{bottomItem.text}</span>
     </>
@@ -28,7 +30,7 @@ function Navigator({ items = BOTTOM_NAV_ITEMS.HOME, name = 'nav' }) {
   const getClassActive = (urls) => {
     return urls.includes(location.pathname) ? 'active' : '';
   };
-  const szIcon = name === 'nav' ? 'sz-14' : 'sz-24';
+  const szIcon = name === 'nav' ? 'sz-20' : 'sz-24';
   return (
     <nav className={`nav_footer flex flex-midle flex-space nav_footer_${name}`}>
       {items?.length > 0 &&

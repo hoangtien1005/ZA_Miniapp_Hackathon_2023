@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 
-import Alert from '../Alert';
+import Alert from '../../../../shared/Alert';
 import { useParams } from 'react-router-dom';
 
 interface ReplyBadgeProps {

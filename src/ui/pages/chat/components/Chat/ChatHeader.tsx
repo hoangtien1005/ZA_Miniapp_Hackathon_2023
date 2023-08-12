@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import Skeleton from '../Skeleton';
+import Skeleton from '../../../../shared/Skeleton';
 import { ConversationInfo } from '~/constants/interface';
 import { useRecoilState } from 'recoil';
 import { userProfileState } from '~/adapters/store/atoms/user';

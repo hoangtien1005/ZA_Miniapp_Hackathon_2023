@@ -20,7 +20,7 @@ export const APP_ROUTES: RouteItem[] = [
     Element: HomePage,
   },
   {
-    path: `${ROUTES.CHAT}/:conversationId`,
+    path: `${ROUTES.CHAT}/:conversationId/:bookingId`,
     Element: ChatPage,
   },
   {

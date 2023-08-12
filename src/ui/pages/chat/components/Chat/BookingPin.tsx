@@ -5,7 +5,7 @@ import { Sheet, useSnackbar } from 'zmp-ui';
 import { useBookingService } from '~/adapters/app-service/booking.service';
 import { ANONYMOUS_AVATARS, ANONYMOUS_NAMES } from '~/constants';
 import { Booking } from '~/domain/booking';
-import { ThreeDotImg } from '~/ui/assets/images';
+import { MatchingImg, ThreeDotImg } from '~/ui/assets/images';
 import useDialog from '~/ui/hooks/use-dialog';
 
 interface BookingPinProps {
@@ -67,7 +67,7 @@ const BookingPin: FC<BookingPinProps> = ({ bookingId, partnerId }) => {
         >
           <div className="flex gap-16 flex-midle">
             <div className="images_drop w-72">
-              <img src={ANONYMOUS_AVATARS[getIndex(partnerId)]} />
+              <img src={MatchingImg} />
             </div>
             <div className="des fz-12">
               <h1 className="text-sub text-lg">Đang tìm kiếm...</h1>

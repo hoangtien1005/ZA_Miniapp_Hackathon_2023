@@ -10,6 +10,7 @@ import ChatHeader from '~/ui/pages/chat/components/Chat/ChatHeader';
 import ChatView from '~/ui/pages/chat/components/Chat/ChatView';
 import InputSection from '~/ui/shared/Input/InputSection';
 import BookingPin from '../components/Chat/BookingPin';
+import { WarningExclamationImg } from '~/ui/assets/images';
 
 const ChatContainer: FC = () => {
   const { conversationId, bookingId } = useParams();
@@ -20,6 +21,7 @@ const ChatContainer: FC = () => {
   };
 
   const { conversation } = useConversation({ conversationId });
+
   const [currentUser] = useRecoilState(userProfileState);
   const [inputSectionOffset, setInputSectionOffset] = useState(0);
   const [replyInfo, setReplyInfo] = useState(null);
@@ -46,10 +48,34 @@ const ChatContainer: FC = () => {
           </>
         ) : error ||
           !conversation?.users?.includes(currentUser?.uid as string) ? (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-6">
-            <img className="h-32 w-32 object-cover" src="/error.svg" alt="" />
-            <p className="text-center text-lg">Conversation does not exists</p>
-          </div>
+          <>
+            <div className="flex h-full w-full flex-col items-center justify-center gap-6">
+              <div className="absolute bottom-[150px] flex flex-col justify-center items-center">
+                <img
+                  src={WarningExclamationImg}
+                  width="50px"
+                  className="mb-4"
+                />
+                <p className="text-center text-lg text-sub">Có lỗi xảy ra,</p>
+                <p className="text-center text-lg text-sub">
+                  vui lòng thử lại sau
+                </p>
+              </div>
+            </div>
+            <div
+              className="absolute bottom-0 left-0 right-0"
+              style={{
+                filter: 'grayscale(1)',
+              }}
+            >
+              <InputSection
+                setInputSectionOffset={setInputSectionOffset}
+                replyInfo={replyInfo}
+                setReplyInfo={setReplyInfo}
+                disabled
+              />
+            </div>
+          </>
         ) : (
           <>
             {/* <ChatHeader conversation={conversation} /> */}

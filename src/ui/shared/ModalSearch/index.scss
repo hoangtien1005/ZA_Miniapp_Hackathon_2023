@@ -1,0 +1,46 @@
+.container-modal-search {
+  height: 100%;
+  border-top: 1px solid #efeff1;
+  z-index: 99999;
+
+  .container-modal-field-search {
+    padding: 12px 16px;
+    background: #f6f6f7;
+  }
+
+  .container-result {
+    max-height: 260px;
+    overflow-y: scroll;
+    padding: 0 16px;
+
+    &.virtual {
+      padding-right: 0;
+    }
+  }
+
+  .item-result#item {
+    padding: 16px 8px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #343436;
+
+    &+.item-result {
+      border-top: 1px solid #efeff1;
+    }
+  }
+
+  .container-result {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+}

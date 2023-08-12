@@ -28,6 +28,8 @@ import {
 import { useGetAllOAFoodQuery } from '~/application/oa/useGetAllOA.usecase';
 import { handleOpenWebview } from '~/utils/zalo.util';
 import { FoodBannerImg } from '~/ui/assets/images';
+import { useAppNavigate } from '~/ui/hooks';
+import ROUTES from '~/constants/routes';
 
 export const HomepageContainer = () => {
   const { data: insuranceBanners } = useGetBannersByTypeQuery({
@@ -97,6 +99,10 @@ export const HomepageContainer = () => {
   const handleHorizontalArticleClick = (article) => () => {
     handleOpenWebview(article.link);
   };
+  const navigate = useAppNavigate();
+  useEffect(() => {
+    navigate(`${ROUTES.BOOKING}?id=1`);
+  }, [])
   return (
     <>
       <EntriesHomeZone headerBanner={headerBanner} />

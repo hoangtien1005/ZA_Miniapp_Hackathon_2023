@@ -74,7 +74,7 @@ const BookingContainer = () => {
         text: "Tạo cuộc hẹn thành công",
         type: "success",
       });
-      // setTimeout(() => navigate(ROUTES.BOOKING_LIST), 2000);
+      setTimeout(() => navigate(ROUTES.BOOKING_LIST), 1000);
     })
   };
 

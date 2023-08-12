@@ -17,6 +17,7 @@ import MyFizaApp from './shared/MyFizaApp/MyFizaApp';
 // import 'https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css';
 import '~/ui/assets/scss/layout.scss';
 import Navigator from './shared/Navigator/Navigator';
+import GlobalSheet from './shared/GlobalSheet/GlobalSheet';
 
 const queryClient = new QueryClient();
 
@@ -49,7 +50,7 @@ function MyApp() {
                 <AppInit />
                 <HeaderBar />
                 <AnimationRoutes>{renderRoutes(APP_ROUTES)}</AnimationRoutes>
-                {/* <GlobalSheet /> */}
+                <GlobalSheet />
                 <Navigator />
               </ZMPRouter>
             </SnackbarProvider>

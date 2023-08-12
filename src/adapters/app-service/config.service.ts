@@ -58,12 +58,12 @@ class ConfigService extends BaseApiService {
       });
   }
 
-  getConfigConsent(): Promise<any> {
-    const path = `config/consent-version`;
+  getAllCategories(): Promise<any> {
+    const path = `getAllCategories`;
     return super
       .get(this.generateUrl(path))
       .then((res) => {
-        return mappingDataSnakeToCamel(res.data);
+        return res.result;
       })
       .catch((err) => {
         console.error('Error get config consent: ', err);

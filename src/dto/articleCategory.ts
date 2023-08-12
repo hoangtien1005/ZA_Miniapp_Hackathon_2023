@@ -1,11 +1,7 @@
+import { any } from 'prop-types';
 import { ArticleCategory } from '~/domain/articleCategory';
 
-export interface ArticleCategoryDTO {
-  id: number;
-  key: string;
-  name: string;
-  index: number;
-}
+export type ArticleCategoryDTO = any;
 
 export const articleCategoryFromDTO = (
   dto: ArticleCategoryDTO

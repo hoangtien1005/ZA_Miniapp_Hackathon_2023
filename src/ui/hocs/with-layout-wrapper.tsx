@@ -29,9 +29,9 @@ export const BOTTOM_NAV_ITEMS = {
     },
     {
       imageSrc: NavDiscoverOnImg,
-      text: 'Chat',
-      url: ROUTES.CHAT,
-      name: 'CHAT',
+      text: 'Cuộc hẹn',
+      url: ROUTES.BOOKING_LIST,
+      name: 'BOOKING_LIST',
     },
     {
       imageSrc: NavProfileOnImg,

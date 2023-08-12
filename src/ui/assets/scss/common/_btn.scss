@@ -1,6 +1,6 @@
 .btn {
 	min-width: 150px;
-	max-width: 310px;
+	// max-width: 310px;
 	line-height: 46px;
 	font-size: 14px;
 	font-family: 'Roboto';
@@ -16,12 +16,22 @@
 		line-height: 52px;
 	}
 	&-primary {
-		background-color: $color-main;
+		background-color: #F89945;
 		color: #fff;
+    height: 59px;
+    border-radius: 15px;
+    padding: 16px;
+    line-height: 16px;
 		&.disabled {
 			background-color: $text_400;
 			pointer-events: none;
 		}
+    &.btn-intro{
+      font-size: 14px;
+      padding: 12px;
+      height: auto;
+      margin-top: 16px;
+    }
 	}
 	&-red {
 	  background-color: #FF4B38;

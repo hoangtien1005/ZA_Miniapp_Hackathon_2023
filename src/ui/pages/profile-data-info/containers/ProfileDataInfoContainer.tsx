@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import FieldValue from '../components/FieldValue';
 
 import { useGetDetailSubmittedProfileByQuery } from '~/application/submittedProfile/useGetDetailSubmittedProfilesByQuery.usecase';
-import { WithdrawProfileUsecase } from '~/application/submittedProfile/withdrawProfileUsecase';
+import { getBooking } from '~/application/submittedProfile/withdrawProfileUsecase';
 import ROUTES from '~/constants/routes';
 // import LOG from '~/log';
 import { RemoveDataImg } from '~/ui/assets/images';
@@ -35,7 +35,7 @@ const ProfileDataInfoContainer = () => {
     toggleModalRemove();
 
     Promise.all([
-      WithdrawProfileUsecase({
+      getBooking({
         lead_uuid: leadId,
         lead_type: Number(leadType),
       }),

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useGetConfigConsent } from '../consent/useGetConfigConsent';
+import { useGetAllCategories } from '../consent/useGetConfigConsent';
 
 export const handleCacheGlobalData = async () => {
-  const consentData = await useGetConfigConsent();
+  const consentData = await useGetAllCategories(); 
+  return consentData;
 };

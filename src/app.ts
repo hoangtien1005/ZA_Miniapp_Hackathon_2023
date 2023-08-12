@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 
 import 'zmp-ui/zaui.css';
 
+import './css/tailwind.css';
 import './css/app.scss';
 
 // Import App Component

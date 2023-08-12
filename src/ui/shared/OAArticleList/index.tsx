@@ -7,35 +7,39 @@ import { handleOpenWebview } from '~/utils/zalo.util';
 
 interface OAArticleListProps {
   containerClassName?: string;
-  articles: OAArticle[] | undefined;
+  articles: any;
   handleArticleClick: any;
+  onClickViewDetailOA: any;
 }
 
 export const OAArticleListVertical: React.FC<OAArticleListProps> = ({
   containerClassName,
   articles = [],
   handleArticleClick,
+  onClickViewDetailOA,
 }) => {
   return (
     <div className={`news_list ${containerClassName}`}>
       {articles.map((article) => {
         return (
           <div
-            key={article.oaArticleId}
+            key={article.oa_id}
             className="news_item news_item_list mt-16"
-            onClick={handleArticleClick(article)}
+            onClick={() => onClickViewDetailOA(article.oa_id)}
           >
             <div className="images">
               <div className="imgDrop">
                 {' '}
-                <img src={article.thumb} alt="" />
+                <img src={article.cover} alt="" />
               </div>
             </div>
             <div className="news_des">
-              <h4 className="ttl fw-500 trim trim_2">{article.title}</h4>
+              <h4 className="ttl fw-500 trim trim_2">{article.name}</h4>
               <div className="date fz-12 mt-8 color_text_500">
-                {formatDate(article.oaUpdatedAt, 'vi-VN', 'DD/MM/YYYY')} •{' '}
-                {article.totalView} người xem
+                {/* {formatDate(article.oaUpdatedAt, 'vi-VN', 'DD/MM/YYYY')} •{' '} */}
+                {/* {article.totalView} người xem
+                 */}
+                 {article.description}
               </div>
             </div>
           </div>

@@ -28,16 +28,15 @@ class AuthService extends BaseApiService {
   }
 
   loginFiza(token: string): Promise<ProfileDTO> {
-    const path = 'fiza-miniapp-auth/login';
+    const path = 'login';
     return super
       .post(
-        this.generateUrl(path),
-        {},
+        this.generateUrl(path, "https://zah-4.123c.vn/api"),
         {},
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          accessToken: token,
+        },
+        {
         }
       )
       .then((res) => {
@@ -45,7 +44,7 @@ class AuthService extends BaseApiService {
       })
       .catch((err) => {
         if (err) {
-          console.log('Error login insurance: ', err);
+          console.log('Error login: ', err);
         }
         return null;
       });
@@ -54,7 +53,7 @@ class AuthService extends BaseApiService {
   login(): Promise<any> {
     return new Promise<any>(async (resolve, reject) => {
       let zaloToken = (await this._getAccessToken()) as string;
-      if (!appConfig.isProd) zaloToken = 'DEFAULT_USER_ACCESS_TOKEN';
+      if (!appConfig.isProd) zaloToken = 'h-fyLFwo33Ylw7zH-x88FQpbV5JvfLndyu5pSiUNS1lIj7yXt9DhHVBAR5_4x4uxykzb2ABuUsNnu5uDrRrQ2zoW927_boSN_uqZSzQ12KVEXZzqxAyCOFgLF73Lb2uTWwybEwUvCmkqi3eMvPqC6_sbCmdbgG0cw8iVCFhM50tmoXKzeiLh6x78Op2Ov78foxr21PARDcYQmpPCjlKOKOFP6KgXnWT9bP4bJBE887BbaHn8svTZ8-cRRWhAfrupoV18ECdiU3Nko5abxiLnIhdESoIHZGOnPM5kHbpwgWan';
       if (zaloToken) {
         const profileUser = await this.loginFiza(zaloToken);
         if (profileUser) {

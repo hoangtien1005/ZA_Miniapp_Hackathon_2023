@@ -241,7 +241,8 @@ const BookingContainer = () => {
                   registerOption={validateSchema.endTime}
                   name="endTime"
                   // @ts-ignore
-                  listOption={watchStartTime ? timeOptions.filter((item) => item.value > watchStartTime) : timeOptions}
+                  disabled={!watchStartTime}
+                  listOption={watchStartTime && timeOptions.filter((item) => item.value > watchStartTime)}
                   onClickItem={handleSelectEndTime}
                   error={errors.endTime?.message}
 

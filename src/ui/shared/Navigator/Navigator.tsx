@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { doc } from 'prettier';
 import React, { useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
@@ -33,17 +32,6 @@ function Navigator({ items = BOTTOM_NAV_ITEMS.HOME, name = 'nav' }) {
     return urls.includes(location.pathname) ? 'active' : '';
   };
   const szIcon = name === 'nav' ? 'sz-20' : 'sz-24';
-
-  // if (
-  //   invisibleBottomNavigatorRoutes.some((route) =>
-  //     location.pathname.find(route)
-  //   )
-  // ) {
-  //   return <></>;
-  // }
-  console.log('invisibleBottomNavigatorRoutes', invisibleBottomNavigatorRoutes);
-  console.log('location.pathname', location.pathname);
-
   const isHidden = invisibleBottomNavigatorRoutes.some((route) =>
     location.pathname.includes(route)
   );

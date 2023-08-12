@@ -16,7 +16,7 @@ interface RightMessageProps {
 }
 
 const RightMessage: FC<RightMessageProps> = ({ message, setReplyInfo }) => {
-  const { id: conversationId } = useParams();
+  const { conversationId } = useParams();
 
   const [isImageViewOpened, setIsImageViewOpened] = useState(false);
 
@@ -62,7 +62,6 @@ const RightMessage: FC<RightMessageProps> = ({ message, setReplyInfo }) => {
                 title={formattedDate}
                 className="text-4xl"
               >
-                cacasca
                 {message.content}
               </div>
             ) : (

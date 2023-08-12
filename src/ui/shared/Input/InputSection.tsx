@@ -216,7 +216,7 @@ const InputSection: FC<InputSectionProps> = ({
   return (
     <>
       <div
-        className={`border-dark-lighten flex h-16 items-stretch gap-1 border-t px-4 ${
+        className={`border-dark-lighten flex h-16 items-stretch gap-1 border-t px-8 ${
           disabled ? 'pointer-events-none select-none' : ''
         }`}
       >

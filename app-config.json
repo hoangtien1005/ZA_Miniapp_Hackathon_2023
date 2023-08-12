@@ -5,7 +5,8 @@
     "headerColor": "",
     "textColor": "white",
     "statusBarColor": "#3366FF",
-    "leftButton": "back"
+    "leftButton": "back",
+    "selfControlLoading": true
   },
   "debug": false,
   "listCSS": [],

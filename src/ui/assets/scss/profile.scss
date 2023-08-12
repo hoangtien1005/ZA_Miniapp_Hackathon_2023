@@ -129,10 +129,13 @@
       }
 
       .detail {
-        display: flex;
-
+        display: flex !important;
+        border-radius: 22px;
+        background: #FFF;
+        border: 1px solid #E5E5E5;
+        padding: 12px;
         img {
-          margin-right: 14px;
+          margin-right: 20px;
         }
 
         h3 {

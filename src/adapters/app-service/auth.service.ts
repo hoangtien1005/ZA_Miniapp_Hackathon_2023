@@ -31,7 +31,7 @@ class AuthService extends BaseApiService {
     const path = 'login';
     return super
       .post(
-        this.generateUrl(path, "http://118.102.2.130/zahackathondb/api"),
+        this.generateUrl(path, "https://zah-4.123c.vn/api"),
         {},
         {
           accessToken: token,
